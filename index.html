@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medalya | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <div class="nav-brand">
+            <span class="brand-text">M</span>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item active" data-section="home">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </li>
+            <li class="nav-item" data-section="education">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Education</span>
+            </li>
+            <li class="nav-item" data-section="projects">
+                <i class="fas fa-briefcase"></i>
+                <span>Projects</span>
+            </li>
+            <li class="nav-item" data-section="skills">
+                <i class="fas fa-code"></i>
+                <span>Skills</span>
+            </li>
+            <li class="nav-item" data-section="contact">
+                <i class="fas fa-envelope"></i>
+                <span>Contact</span>
+            </li>
+        </ul>
+        <div class="nav-footer">
+            <i class="fas fa-moon theme-toggle" id="themeToggle"></i>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-brand">Medalya</div>
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section class="section active" id="home">
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="avatar-container">
+                        <div class="avatar-ring">
+                            <div class="avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h1 class="greeting">Hi, I'm <span class="highlight">Medalya</span></h1>
+                    <h2 class="role">Full Stack Developer</h2>
+                    <p class="bio">Passionate about creating elegant solutions to complex problems. I build modern web applications with cutting-edge technologies and a focus on user experience.</p>
+                    <div class="cta-buttons">
+                        <a href="#projects" class="btn btn-primary" data-nav="projects">
+                            <i class="fas fa-arrow-right"></i> View My Work
+                        </a>
+                        <a href="login.html" class="btn btn-secondary">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="code-window">
+                        <div class="code-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <pre class="code-content"><code><span class="keyword">const</span> <span class="variable">developer</span> = {
+  <span class="property">name</span>: <span class="string">"Medalya"</span>,
+  <span class="property">skills</span>: [<span class="string">"React"</span>, <span class="string">"Node.js"</span>, <span class="string">"Python"</span>],
+  <span class="property">passion</span>: <span class="string">"Building the future"</span>,
+  <span class="method">code</span>: () => <span class="string">"Always learning"</span>
+};</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="section" id="education">
+            <h2 class="section-title">Education & <span class="highlight">Certifications</span></h2>
+            <div class="education-grid">
+                <div class="edu-card">
+                    <div class="edu-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="edu-badge">Degree</div>
+                    <h3>Bachelor of Science in Computer Science</h3>
+                    <p class="edu-provider">University of Technology</p>
+                    <p class="edu-year">2020 - 2024</p>
+                    <p class="edu-desc">Graduated with honors. Specialized in software engineering and artificial intelligence.</p>
+                </div>
+                <div class="edu-card">
+                    <div class="edu-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="edu-badge">Bootcamp</div>
+                    <h3>Full Stack Web Development</h3>
+                    <p class="edu-provider">Code Academy Pro</p>
+                    <p class="edu-year">2024</p>
+                    <p class="edu-desc">Intensive 12-week program covering React, Node.js, and modern web technologies.</p>
+                </div>
+                <div class="edu-card">
+                    <div class="edu-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="edu-badge">Certificate</div>
+                    <h3>AWS Cloud Practitioner</h3>
+                    <p class="edu-provider">Amazon Web Services</p>
+                    <p class="edu-year">2025</p>
+                    <p class="edu-desc">Cloud computing fundamentals, AWS services, and best practices.</p>
+                </div>
+                <div class="edu-card">
+                    <div class="edu-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="edu-badge">Certificate</div>
+                    <h3>Meta Front-End Developer</h3>
+                    <p class="edu-provider">Coursera</p>
+                    <p class="edu-year">2025</p>
+                    <p class="edu-desc">React fundamentals, UX design, and responsive web development.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section" id="projects">
+            <h2 class="section-title">Featured <span class="highlight">Projects</span></h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>E-Commerce Platform</h3>
+                        <p>Full-featured online store with payment integration, inventory management, and admin dashboard.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Stripe</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Real-Time Chat App</h3>
+                        <p>Instant messaging platform with private chats, group rooms, and file sharing capabilities.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Socket.io</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Redis</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Analytics Dashboard</h3>
+                        <p>Data visualization dashboard with real-time metrics, charts, and exportable reports.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">D3.js</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Task Management System</h3>
+                        <p>Project management tool with team collaboration, deadlines, and progress tracking.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Prisma</span>
+                            <span class="tech-tag">Tailwind</span>
+                            <span class="tech-tag">TypeScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section" id="skills">
+            <h2 class="section-title">Technical <span class="highlight">Skills</span></h2>
+            <div class="skills-container">
+                <div class="skills-column">
+                    <h3 class="skills-category">Frontend</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                            <span class="skill-name">HTML/CSS</span>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="95"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-icon"><i class="fab fa-js-square"></i></div>
+                            <span class="skill-name">JavaScript</span>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-icon"><i class="fab fa-react"></i></div>
+                            <span class="skill-name">React</span>
+                            <span class="skill-percent">88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="88"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-icon"><i class="fab fa-vuejs"></i></div>
+                            <span class="skill-name">Vue.js</span>
+                            <span class="skill-percent">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="75"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skills-column">
+                    <h3 class="skills-category">Backend</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-icon"><i class="fab fa-node-js"></i></div>
+                            <span class="skill-name">Node.js</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-icon"><i class="fab fa-python"></i></div>
+                            <span class="skill-name">Python</span>
+                            <span class="skill-percent">82%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="82"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-icon"><i class="fas fa-database"></i></div>
+                            <span class="skill-name">PostgreSQL</span>
+                            <span class="skill-percent">78%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="78"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-icon"><i class="fab fa-aws"></i></div>
+                            <span class="skill-name">AWS</span>
+                            <span class="skill-percent">70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="70"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section" id="contact">
+            <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's work together</h3>
+                    <p>Have a project in mind or just want to chat? Feel free to reach out!</p>
+                    <div class="contact-links">
+                        <a href="mailto:medalya@email.com" class="contact-link">
+                            <i class="fas fa-envelope"></i>
+                            <span>medalya@email.com</span>
+                        </a>
+                        <a href="https://github.com/dantosjulieann2320-cpu" class="contact-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="#" class="contact-link">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="#" class="contact-link">
+                            <i class="fab fa-twitter"></i>
+                            <span>Twitter</span>
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

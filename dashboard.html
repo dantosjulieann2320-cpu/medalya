@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Medalya Portfolio</title>
+    <link rel="stylesheet" href="dashboard-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-user-circle"></i>
+                <span>Medalya</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="nav-item active" data-section="dashboard">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </li>
+                <li class="nav-item" data-section="upload">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <span>Upload Achievement</span>
+                </li>
+                <li class="nav-item" data-section="portfolio">
+                    <i class="fas fa-folder-open"></i>
+                    <span>Portfolio Files</span>
+                </li>
+                <li class="nav-item" data-section="certificates">
+                    <i class="fas fa-certificate"></i>
+                    <span>Certificates</span>
+                </li>
+                <li class="nav-item" data-section="reports">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Reports</span>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-details">
+                    <span class="user-name" id="userName">User</span>
+                    <span class="user-role">Student</span>
+                </div>
+            </div>
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search...">
+            </div>
+            <div class="topbar-actions">
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="user-dropdown">
+                    <img src="https://ui-avatars.com/api/?name=User&background=0088FF&color=fff" alt="User" class="dropdown-avatar">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section class="content-section active" id="dashboard">
+            <div class="section-header">
+                <h1>Dashboard</h1>
+                <p>Welcome back! Here's your portfolio overview.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-folder"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>12</h3>
+                        <p>Portfolio Files</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>8</h3>
+                        <p>Certificates</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>5</h3>
+                        <p>Pending Verifications</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>15</h3>
+                        <p>Verified Achievements</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="card recent-activity">
+                    <div class="card-header">
+                        <h2>Recent Activity</h2>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon green">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="activity-info">
+                                <p>Certificate "AWS Cloud Practitioner" verified</p>
+                                <span>2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon blue">
+                                <i class="fas fa-upload"></i>
+                            </div>
+                            <div class="activity-info">
+                                <p>New achievement uploaded: "Hackathon Winner"</p>
+                                <span>1 day ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon orange">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="activity-info">
+                                <p>Project "E-Commerce Platform" pending review</p>
+                                <span>2 days ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon purple">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="activity-info">
+                                <p>Monthly report generated</p>
+                                <span>3 days ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card quick-actions">
+                    <div class="card-header">
+                        <h2>Quick Actions</h2>
+                    </div>
+                    <div class="actions-grid">
+                        <button class="action-btn" data-section="upload">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Upload Achievement</span>
+                        </button>
+                        <button class="action-btn" data-section="portfolio">
+                            <i class="fas fa-plus"></i>
+                            <span>Add Portfolio File</span>
+                        </button>
+                        <button class="action-btn" data-section="certificates">
+                            <i class="fas fa-certificate"></i>
+                            <span>Add Certificate</span>
+                        </button>
+                        <button class="action-btn" data-section="reports">
+                            <i class="fas fa-download"></i>
+                            <span>Download Report</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upload Achievement Section -->
+        <section class="content-section" id="upload">
+            <div class="section-header">
+                <h1>Upload Achievement</h1>
+                <p>Upload your achievements for teacher verification.</p>
+            </div>
+
+            <div class="upload-container">
+                <div class="upload-form-card">
+                    <form id="achievementForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="achievementTitle">Achievement Title</label>
+                                <input type="text" id="achievementTitle" placeholder="e.g., Hackathon Winner">
+                            </div>
+                            <div class="form-group">
+                                <label for="achievementDate">Date</label>
+                                <input type="date" id="achievementDate">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="achievementCategory">Category</label>
+                            <select id="achievementCategory">
+                                <option value="">Select Category</option>
+                                <option value="academic">Academic</option>
+                                <option value="competition">Competition</option>
+                                <option value="certification">Certification</option>
+                                <option value="project">Project</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="achievementDesc">Description</label>
+                            <textarea id="achievementDesc" rows="4" placeholder="Describe your achievement..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="teacherName">Assigned Teacher</label>
+                            <select id="teacherName">
+                                <option value="">Select Teacher</option>
+                                <option value="teacher1">Prof. John Smith</option>
+                                <option value="teacher2">Prof. Maria Garcia</option>
+                                <option value="teacher3">Prof. David Wilson</option>
+                            </select>
+                        </div>
+
+                        <div class="upload-zone" id="uploadZone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <h3>Drag & Drop Files Here</h3>
+                            <p>or click to browse</p>
+                            <input type="file" id="fileInput" multiple hidden>
+                            <button type="button" class="browse-btn" id="browseBtn">Browse Files</button>
+                        </div>
+
+                        <div class="uploaded-files" id="uploadedFiles"></div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary">Cancel</button>
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                                Submit for Verification
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="verification-process">
+                    <h3>Verification Process</h3>
+                    <div class="process-steps">
+                        <div class="step active">
+                            <div class="step-icon">
+                                <i class="fas fa-upload"></i>
+                            </div>
+                            <div class="step-info">
+                                <h4>Upload</h4>
+                                <p>Submit your achievement</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <div class="step-info">
+                                <h4>Teacher Review</h4>
+                                <p>Pending verification</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="step-info">
+                                <h4>Approved</h4>
+                                <p>Added to portfolio</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pending-verifications">
+                        <h4>Pending Verifications</h4>
+                        <div class="verification-item">
+                            <div class="verification-info">
+                                <span class="title">Hackathon Winner</span>
+                                <span class="teacher">Prof. John Smith</span>
+                            </div>
+                            <span class="status pending">Pending</span>
+                        </div>
+                        <div class="verification-item">
+                            <div class="verification-info">
+                                <span class="title">Research Paper Publication</span>
+                                <span class="teacher">Prof. Maria Garcia</span>
+                            </div>
+                            <span class="status pending">Pending</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Files Section -->
+        <section class="content-section" id="portfolio">
+            <div class="section-header">
+                <h1>Portfolio Files</h1>
+                <p>Manage your portfolio documents and files.</p>
+            </div>
+
+            <div class="portfolio-toolbar">
+                <div class="search-filter">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search files..." id="searchFiles">
+                    </div>
+                    <select id="filterCategory">
+                        <option value="all">All Categories</option>
+                        <option value="project">Projects</option>
+                        <option value="document">Documents</option>
+                        <option value="image">Images</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <button class="btn-primary" id="addFileBtn">
+                    <i class="fas fa-plus"></i>
+                    Add File
+                </button>
+            </div>
+
+            <div class="files-grid" id="filesGrid">
+                <div class="file-card">
+                    <div class="file-icon blue">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <div class="file-info">
+                        <h4>E-Commerce Platform</h4>
+                        <p>React, Node.js, MongoDB</p>
+                        <span class="file-date">Added: Jan 15, 2025</span>
+                    </div>
+                    <div class="file-actions">
+                        <button class="icon-btn" title="View"><i class="fas fa-eye"></i></button>
+                        <button class="icon-btn" title="Download"><i class="fas fa-download"></i></button>
+                        <button class="icon-btn danger" title="Delete"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+
+                <div class="file-card">
+                    <div class="file-icon green">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="file-info">
+                        <h4>Resume_2025.pdf</h4>
+                        <p>PDF Document</p>
+                        <span class="file-date">Added: Feb 3, 2025</span>
+                    </div>
+                    <div class="file-actions">
+                        <button class="icon-btn" title="View"><i class="fas fa-eye"></i></button>
+                        <button class="icon-btn" title="Download"><i class="fas fa-download"></i></button>
+                        <button class="icon-btn danger" title="Delete"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+
+                <div class="file-card">
+                    <div class="file-icon orange">
+                        <i class="fas fa-file-image"></i>
+                    </div>
+                    <div class="file-info">
+                        <h4>Project_Screenshot.png</h4>
+                        <p>PNG Image</p>
+                        <span class="file-date">Added: Mar 12, 2025</span>
+                    </div>
+                    <div class="file-actions">
+                        <button class="icon-btn" title="View"><i class="fas fa-eye"></i></button>
+                        <button class="icon-btn" title="Download"><i class="fas fa-download"></i></button>
+                        <button class="icon-btn danger" title="Delete"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+
+                <div class="file-card">
+                    <div class="file-icon purple">
+                        <i class="fas fa-file-powerpoint"></i>
+                    </div>
+                    <div class="file-info">
+                        <h4>Project_Presentation.pptx</h4>
+                        <p>PowerPoint Presentation</p>
+                        <span class="file-date">Added: Apr 8, 2025</span>
+                    </div>
+                    <div class="file-actions">
+                        <button class="icon-btn" title="View"><i class="fas fa-eye"></i></button>
+                        <button class="icon-btn" title="Download"><i class="fas fa-download"></i></button>
+                        <button class="icon-btn danger" title="Delete"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates Section -->
+        <section class="content-section" id="certificates">
+            <div class="section-header">
+                <h1>Certificates</h1>
+                <p>View and manage your earned certificates.</p>
+            </div>
+
+            <div class="certificates-toolbar">
+                <button class="btn-primary" id="addCertBtn">
+                    <i class="fas fa-plus"></i>
+                    Add Certificate
+                </button>
+            </div>
+
+            <div class="certificates-grid" id="certificatesGrid">
+                <div class="certificate-card verified">
+                    <div class="cert-badge">
+                        <i class="fas fa-check-circle"></i>
+                        Verified
+                    </div>
+                    <div class="cert-icon">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <h3>AWS Cloud Practitioner</h3>
+                    <p class="cert-issuer">Amazon Web Services</p>
+                    <p class="cert-date">Issued: Jan 2025</p>
+                    <div class="cert-actions">
+                        <button class="btn-secondary btn-sm">View</button>
+                        <button class="btn-primary btn-sm">Download</button>
+                    </div>
+                </div>
+
+                <div class="certificate-card verified">
+                    <div class="cert-badge">
+                        <i class="fas fa-check-circle"></i>
+                        Verified
+                    </div>
+                    <div class="cert-icon">
+                        <i class="fab fa-meta"></i>
+                    </div>
+                    <h3>Meta Front-End Developer</h3>
+                    <p class="cert-issuer">Coursera</p>
+                    <p class="cert-date">Issued: Mar 2025</p>
+                    <div class="cert-actions">
+                        <button class="btn-secondary btn-sm">View</button>
+                        <button class="btn-primary btn-sm">Download</button>
+                    </div>
+                </div>
+
+                <div class="certificate-card pending">
+                    <div class="cert-badge pending">
+                        <i class="fas fa-clock"></i>
+                        Pending
+                    </div>
+                    <div class="cert-icon">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <h3>Google Data Analytics</h3>
+                    <p class="cert-issuer">Google</p>
+                    <p class="cert-date">Issued: May 2025</p>
+                    <div class="cert-actions">
+                        <button class="btn-secondary btn-sm">View</button>
+                        <button class="btn-primary btn-sm">Download</button>
+                    </div>
+                </div>
+
+                <div class="certificate-card verified">
+                    <div class="cert-badge">
+                        <i class="fas fa-check-circle"></i>
+                        Verified
+                    </div>
+                    <div class="cert-icon">
+                        <i class="fab fa-microsoft"></i>
+                    </div>
+                    <h3>Azure Fundamentals</h3>
+                    <p class="cert-issuer">Microsoft</p>
+                    <p class="cert-date">Issued: Apr 2025</p>
+                    <div class="cert-actions">
+                        <button class="btn-secondary btn-sm">View</button>
+                        <button class="btn-primary btn-sm">Download</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reports Section -->
+        <section class="content-section" id="reports">
+            <div class="section-header">
+                <h1>Reports</h1>
+                <p>Generate and download your portfolio reports.</p>
+            </div>
+
+            <div class="reports-container">
+                <div class="report-types">
+                    <div class="report-card" data-report="portfolio">
+                        <div class="report-icon blue">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Portfolio Summary</h3>
+                        <p>Complete overview of your portfolio with all achievements and projects.</p>
+                        <button class="btn-primary generate-report" data-type="portfolio">
+                            <i class="fas fa-file-pdf"></i>
+                            Generate PDF
+                        </button>
+                    </div>
+
+                    <div class="report-card" data-report="achievements">
+                        <div class="report-icon green">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Achievements Report</h3>
+                        <p>Detailed list of all verified achievements and certifications.</p>
+                        <button class="btn-primary generate-report" data-type="achievements">
+                            <i class="fas fa-file-pdf"></i>
+                            Generate PDF
+                        </button>
+                    </div>
+
+                    <div class="report-card" data-report="certificates">
+                        <div class="report-icon orange">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>Certificates Report</h3>
+                        <p>All your earned certificates with verification status.</p>
+                        <button class="btn-primary generate-report" data-type="certificates">
+                            <i class="fas fa-file-pdf"></i>
+                            Generate PDF
+                        </button>
+                    </div>
+
+                    <div class="report-card" data-report="skills">
+                        <div class="report-icon purple">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3>Skills Report</h3>
+                        <p>Skills assessment and proficiency levels breakdown.</p>
+                        <button class="btn-primary generate-report" data-type="skills">
+                            <i class="fas fa-file-pdf"></i>
+                            Generate PDF
+                        </button>
+                    </div>
+                </div>
+
+                <div class="recent-reports">
+                    <h3>Recent Reports</h3>
+                    <div class="reports-list">
+                        <div class="report-item">
+                            <div class="report-file">
+                                <i class="fas fa-file-pdf"></i>
+                                <div class="report-details">
+                                    <span class="report-name">Portfolio_Summary_2025.pdf</span>
+                                    <span class="report-size">2.4 MB</span>
+                                </div>
+                            </div>
+                            <div class="report-actions">
+                                <button class="icon-btn" title="Download"><i class="fas fa-download"></i></button>
+                                <button class="icon-btn" title="Delete"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="report-item">
+                            <div class="report-file">
+                                <i class="fas fa-file-pdf"></i>
+                                <div class="report-details">
+                                    <span class="report-name">Achievements_Report_May.pdf</span>
+                                    <span class="report-size">1.8 MB</span>
+                                </div>
+                            </div>
+                            <div class="report-actions">
+                                <button class="icon-btn" title="Download"><i class="fas fa-download"></i></button>
+                                <button class="icon-btn" title="Delete"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add File Modal -->
+    <div class="modal" id="addFileModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Portfolio File</h2>
+                <button class="modal-close" id="closeFileModal">&times;</button>
+            </div>
+            <form id="addFileForm">
+                <div class="form-group">
+                    <label for="fileName">File Name</label>
+                    <input type="text" id="fileName" placeholder="Enter file name">
+                </div>
+                <div class="form-group">
+                    <label for="fileCategory">Category</label>
+                    <select id="fileCategory">
+                        <option value="project">Project</option>
+                        <option value="document">Document</option>
+                        <option value="image">Image</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fileDesc">Description</label>
+                    <textarea id="fileDesc" rows="3" placeholder="Brief description"></textarea>
+                </div>
+                <div class="upload-zone modal-upload">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & drop or click to upload</p>
+                    <input type="file" id="modalFileInput" hidden>
+                    <button type="button" class="browse-btn" id="modalBrowseBtn">Browse</button>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" id="cancelFileModal">Cancel</button>
+                    <button type="submit" class="btn-primary">Add File</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Certificate Modal -->
+    <div class="modal" id="addCertModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Certificate</h2>
+                <button class="modal-close" id="closeCertModal">&times;</button>
+            </div>
+            <form id="addCertForm">
+                <div class="form-group">
+                    <label for="certName">Certificate Name</label>
+                    <input type="text" id="certName" placeholder="e.g., AWS Cloud Practitioner">
+                </div>
+                <div class="form-group">
+                    <label for="certIssuer">Issuing Organization</label>
+                    <input type="text" id="certIssuer" placeholder="e.g., Amazon Web Services">
+                </div>
+                <div class="form-group">
+                    <label for="certDate">Issue Date</label>
+                    <input type="date" id="certDate">
+                </div>
+                <div class="form-group">
+                    <label for="certId">Certificate ID (Optional)</label>
+                    <input type="text" id="certId" placeholder="Verification ID">
+                </div>
+                <div class="upload-zone modal-upload">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Upload certificate file</p>
+                    <input type="file" id="certFileInput" hidden accept=".pdf,.jpg,.png">
+                    <button type="button" class="browse-btn" id="certBrowseBtn">Browse</button>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" id="cancelCertModal">Cancel</button>
+                    <button type="submit" class="btn-primary">Add Certificate</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Success!</span>
+    </div>
+
+    <script src="dashboard-script.js"></script>
+</body>
+</html>
