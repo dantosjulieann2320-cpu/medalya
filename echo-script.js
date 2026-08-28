@@ -358,6 +358,12 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Progress saved successfully!');
     });
 
+    // Export Tasks
+    document.getElementById('exportTasks')?.addEventListener('click', () => {
+        createConfetti();
+        alert('PDF export would generate a printable version of your Task & Deliverables table.');
+    });
+
     // Ranking
     function renderRanking() {
         const list = document.getElementById('rankingList');

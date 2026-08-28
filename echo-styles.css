@@ -1960,6 +1960,201 @@ body {
     color: var(--white);
 }
 
+/* Tasks & Deliverables Styles */
+.tasks-container {
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.tasks-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.tasks-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tasks-header p {
+    color: var(--gray);
+    font-size: 1.1rem;
+}
+
+.tasks-table-wrapper {
+    overflow-x: auto;
+    border-radius: 16px;
+    background: var(--navy);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    box-shadow: var(--shadow);
+}
+
+.tasks-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+}
+
+.tasks-table thead {
+    background: linear-gradient(135deg, var(--navy-light), var(--navy));
+    border-bottom: 2px solid var(--gold);
+}
+
+.tasks-table th {
+    padding: 20px 24px;
+    text-align: left;
+    font-weight: 700;
+    color: var(--gold);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tasks-table th.col-award {
+    width: 25%;
+}
+
+.tasks-table th.col-tasks {
+    width: 40%;
+}
+
+.tasks-table th.col-deliverables {
+    width: 35%;
+}
+
+.tasks-table tbody tr {
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+    transition: background 0.3s ease;
+}
+
+.tasks-table tbody tr:hover {
+    background: rgba(255, 215, 0, 0.05);
+}
+
+.tasks-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.tasks-table td {
+    padding: 24px;
+    vertical-align: top;
+}
+
+.award-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.award-icon-small {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--navy-dark);
+    flex-shrink: 0;
+}
+
+.award-name-cell strong {
+    display: block;
+    color: var(--white);
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.award-year {
+    font-size: 0.85rem;
+    color: var(--gray);
+}
+
+.task-list-cell,
+.deliverables-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-list-cell li,
+.deliverables-list li {
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.task-list-cell li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: var(--success);
+    font-size: 0.85rem;
+}
+
+.deliverables-list li {
+    padding-left: 28px;
+}
+
+.deliverables-list li i {
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.9rem;
+    top: 10px;
+}
+
+.tasks-summary {
+    margin-top: 40px;
+    padding: 30px;
+    background: var(--navy);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    text-align: center;
+}
+
+.tasks-summary h3 {
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.summary-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 25px;
+}
+
+.summary-item {
+    text-align: center;
+}
+
+.summary-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 5px;
+}
+
+.summary-label {
+    font-size: 0.95rem;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 /* Portfolio Styles */
 .portfolio-container {
     max-width: 1200px;
