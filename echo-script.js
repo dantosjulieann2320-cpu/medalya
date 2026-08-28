@@ -130,6 +130,7 @@ const submissionsData = [
         answer: 'Successfully organized 3 expert talks: (1) Dr. Reyes on AI in Education - attended by 150 students, (2) Engr. Santos on Engineering Careers - attended by 120 students, (3) Prof. Garcia on Research Methods - attended by 100 students. All talks were documented with photos and sign-in sheets.',
         evidence: ['Event Photos', 'Sign-in Sheets', 'Certificates', 'Report'],
         status: 'completed',
+        approval: 'pending',
         submittedDate: 'Aug 25, 2026'
     },
     {
@@ -863,7 +864,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (statusFilter !== 'all') {
-            filtered = filtered.filter(s => s.status === statusFilter);
+            if (statusFilter === 'completed') {
+                filtered = filtered.filter(s => s.approval === 'approved');
+            } else if (statusFilter === 'pending') {
+                filtered = filtered.filter(s => s.approval === 'pending');
+            }
         }
 
         if (filtered.length === 0) {
@@ -878,7 +883,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         list.innerHTML = filtered.map(sub => `
-            <div class="submission-card">
+            <div class="submission-card" data-id="${sub.id}">
                 <div class="submission-header">
                     <div class="submission-info">
                         <h3>${sub.studentName}</h3>
@@ -887,26 +892,97 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span><i class="fas fa-users"></i> ${sub.clubName}</span>
                         </div>
                     </div>
-                    <span class="submission-status ${sub.status}">${sub.status === 'completed' ? 'Completed' : 'Pending'}</span>
+                    <span class="approval-badge ${sub.approval}">${getApprovalLabel(sub.approval)}</span>
                 </div>
                 <div class="submission-task">
-                    <h4><i class="fas fa-tasks"></i> Task: ${sub.taskTitle}</h4>
+                    <h4><i class="fas fa-tasks"></i> Task Given: ${sub.taskTitle}</h4>
                     <p>${sub.taskDesc}</p>
                 </div>
                 <div class="submission-answer">
-                    <h4><i class="fas fa-check-circle"></i> Answer / Submission:</h4>
+                    <h4><i class="fas fa-pen"></i> Student's Answer:</h4>
                     <p>${sub.answer}</p>
                     <div class="submission-evidence">
                         ${sub.evidence.map(e => `<span class="evidence-tag"><i class="fas fa-paperclip"></i> ${e}</span>`).join('')}
                     </div>
                 </div>
+                <div class="admin-approval-section">
+                    <h4><i class="fas fa-user-shield"></i> Admin Verification</h4>
+                    ${sub.approval === 'pending' ? `
+                        <div class="approval-actions">
+                            <div class="reason-input">
+                                <input type="text" placeholder="Reason for approval/rejection (optional)" id="reason-${sub.id}">
+                            </div>
+                            <div class="approval-buttons">
+                                <button class="btn-approve" onclick="approveSubmission(${sub.id})"><i class="fas fa-check"></i> Approve</button>
+                                <button class="btn-reject" onclick="rejectSubmission(${sub.id})"><i class="fas fa-times"></i> Reject</button>
+                            </div>
+                        </div>
+                    ` : `
+                        <div class="approval-result">
+                            <span class="result-icon ${sub.approval}"><i class="fas fa-${sub.approval === 'approved' ? 'check-circle' : 'times-circle'}"></i></span>
+                            <div class="result-info">
+                                <span class="result-status">${sub.approval === 'approved' ? 'APPROVED' : 'REJECTED'}</span>
+                                ${sub.reason ? `<span class="result-reason">Reason: ${sub.reason}</span>` : ''}
+                                <span class="result-date">Reviewed: ${sub.reviewedDate || 'N/A'}</span>
+                            </div>
+                        </div>
+                    `}
+                </div>
                 <div class="submission-date">
                     <span><i class="fas fa-calendar-alt"></i> Submitted: ${sub.submittedDate}</span>
-                    <span><i class="fas fa-clock"></i> Club: ${sub.clubName}</span>
+                    <span><i class="fas fa-award"></i> Points: ${sub.approval === 'approved' ? '150' : '0'}</span>
                 </div>
             </div>
         `).join('');
     }
+
+    function getApprovalLabel(approval) {
+        switch(approval) {
+            case 'approved': return '<i class="fas fa-check-circle"></i> Approved';
+            case 'rejected': return '<i class="fas fa-times-circle"></i> Rejected';
+            default: return '<i class="fas fa-hourglass-half"></i> Pending Review';
+        }
+    }
+
+    // Approve Submission
+    window.approveSubmission = function(id) {
+        const sub = submissionsData.find(s => s.id === id);
+        if (!sub) return;
+
+        const reason = document.getElementById(`reason-${id}`)?.value || '';
+        sub.approval = 'approved';
+        sub.reason = reason;
+        sub.reviewedDate = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+        renderSubmissions(
+            document.getElementById('filterClub')?.value || 'all',
+            document.getElementById('filterStatus')?.value || 'all'
+        );
+        createConfetti();
+        alert(`Submission APPROVED for ${sub.studentName}`);
+    };
+
+    // Reject Submission
+    window.rejectSubmission = function(id) {
+        const sub = submissionsData.find(s => s.id === id);
+        if (!sub) return;
+
+        const reason = document.getElementById(`reason-${id}`)?.value || '';
+        if (!reason) {
+            alert('Please provide a reason for rejection.');
+            return;
+        }
+
+        sub.approval = 'rejected';
+        sub.reason = reason;
+        sub.reviewedDate = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+        renderSubmissions(
+            document.getElementById('filterClub')?.value || 'all',
+            document.getElementById('filterStatus')?.value || 'all'
+        );
+        alert(`Submission REJECTED for ${sub.studentName}`);
+    };
 
     // Filter Submissions
     document.getElementById('filterClub')?.addEventListener('change', (e) => {
