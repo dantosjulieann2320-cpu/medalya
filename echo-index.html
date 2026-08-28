@@ -23,7 +23,6 @@
                 <div class="loading-progress"></div>
             </div>
         </div>
-        <div class="confetti-container" id="loadingConfetti"></div>
     </div>
 
     <!-- Landing Page -->
@@ -89,72 +88,32 @@
                 <p>Sign in to continue your journey</p>
             </div>
 
-            <!-- Login Form -->
             <div class="auth-form" id="loginForm">
                 <h3>Log In</h3>
                 <div class="social-login">
-                    <button class="social-btn google" id="googleLogin">
-                        <i class="fab fa-google"></i>
-                        <span>Continue with Gmail</span>
-                    </button>
-                    <button class="social-btn facebook" id="facebookLogin">
-                        <i class="fab fa-facebook-f"></i>
-                        <span>Continue with Facebook</span>
-                    </button>
+                    <button class="social-btn google"><i class="fab fa-google"></i><span>Continue with Gmail</span></button>
+                    <button class="social-btn facebook"><i class="fab fa-facebook-f"></i><span>Continue with Facebook</span></button>
                 </div>
-                <div class="divider">
-                    <span>or</span>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="loginEmail" placeholder="Email address">
-                </div>
-                <div class="form-group">
-                    <input type="password" id="loginPassword" placeholder="Password">
-                </div>
-                <button class="btn-submit" id="submitLogin">
-                    <span>Log In</span>
-                    <i class="fas fa-arrow-right"></i>
-                </button>
-                <p class="auth-switch">
-                    Don't have an account? <a href="#" id="showSignup">Sign Up</a>
-                </p>
+                <div class="divider"><span>or</span></div>
+                <div class="form-group"><input type="email" id="loginEmail" placeholder="Email address"></div>
+                <div class="form-group"><input type="password" id="loginPassword" placeholder="Password"></div>
+                <button class="btn-submit" id="submitLogin"><span>Log In</span><i class="fas fa-arrow-right"></i></button>
+                <p class="auth-switch">Don't have an account? <a href="#" id="showSignup">Sign Up</a></p>
             </div>
 
-            <!-- Signup Form -->
             <div class="auth-form hidden" id="signupForm">
                 <h3>Create Account</h3>
                 <div class="social-login">
-                    <button class="social-btn google" id="googleSignup">
-                        <i class="fab fa-google"></i>
-                        <span>Sign up with Gmail</span>
-                    </button>
-                    <button class="social-btn facebook" id="facebookSignup">
-                        <i class="fab fa-facebook-f"></i>
-                        <span>Sign up with Facebook</span>
-                    </button>
+                    <button class="social-btn google"><i class="fab fa-google"></i><span>Sign up with Gmail</span></button>
+                    <button class="social-btn facebook"><i class="fab fa-facebook-f"></i><span>Sign up with Facebook</span></button>
                 </div>
-                <div class="divider">
-                    <span>or</span>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="signupName" placeholder="Full Name">
-                </div>
-                <div class="form-group">
-                    <input type="email" id="signupEmail" placeholder="Email address">
-                </div>
-                <div class="form-group">
-                    <input type="password" id="signupPassword" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <input type="text" id="signupStudentId" placeholder="Student ID">
-                </div>
-                <button class="btn-submit" id="submitSignup">
-                    <span>Create Account</span>
-                    <i class="fas fa-arrow-right"></i>
-                </button>
-                <p class="auth-switch">
-                    Already have an account? <a href="#" id="showLogin">Log In</a>
-                </p>
+                <div class="divider"><span>or</span></div>
+                <div class="form-group"><input type="text" id="signupName" placeholder="Full Name"></div>
+                <div class="form-group"><input type="email" id="signupEmail" placeholder="Email address"></div>
+                <div class="form-group"><input type="password" id="signupPassword" placeholder="Password"></div>
+                <div class="form-group"><input type="text" id="signupStudentId" placeholder="Student ID"></div>
+                <button class="btn-submit" id="submitSignup"><span>Create Account</span><i class="fas fa-arrow-right"></i></button>
+                <p class="auth-switch">Already have an account? <a href="#" id="showLogin">Log In</a></p>
             </div>
         </div>
     </div>
@@ -162,26 +121,16 @@
     <!-- Dashboard -->
     <div class="dashboard hidden" id="dashboard">
         <nav class="dashboard-nav">
-            <div class="nav-brand">
-                <i class="fas fa-trophy"></i>
-                <span>EchoHonors</span>
-            </div>
+            <div class="nav-brand"><i class="fas fa-trophy"></i><span>EchoHonors</span></div>
             <div class="nav-links">
-                <button class="nav-link active" data-view="awards">
-                    <i class="fas fa-award"></i> Awards
-                </button>
-                <button class="nav-link" data-view="results">
-                    <i class="fas fa-gamepad"></i> Game Results
-                </button>
-                <button class="nav-link" data-view="admin">
-                    <i class="fas fa-shield-alt"></i> Admin
-                </button>
+                <button class="nav-link active" data-view="awards"><i class="fas fa-award"></i> Awards</button>
+                <button class="nav-link" data-view="ranking"><i class="fas fa-ranking-star"></i> Ranking</button>
+                <button class="nav-link" data-view="portfolio"><i class="fas fa-folder-open"></i> Portfolio</button>
+                <button class="nav-link" data-view="admin"><i class="fas fa-shield-alt"></i> Admin</button>
             </div>
             <div class="nav-user">
                 <span id="userName">Student</span>
-                <button class="btn-logout" id="logoutBtn">
-                    <i class="fas fa-sign-out-alt"></i>
-                </button>
+                <button class="btn-logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i></button>
             </div>
         </nav>
 
@@ -190,7 +139,7 @@
             <div class="dashboard-content">
                 <div class="welcome-section">
                     <h1>Leadership Awards</h1>
-                    <p>Select a club to view tasks and achievements</p>
+                    <p>Complete tasks to earn your leadership awards</p>
                 </div>
 
                 <div class="awards-grid">
@@ -206,6 +155,7 @@
                             </svg>
                             <span class="progress-text">0%</span>
                         </div>
+                        <div class="tasks-count"><span class="completed">0</span> / <span class="total">5</span> Tasks</div>
                     </div>
 
                     <div class="award-card" data-club="sslg">
@@ -220,6 +170,7 @@
                             </svg>
                             <span class="progress-text">0%</span>
                         </div>
+                        <div class="tasks-count"><span class="completed">0</span> / <span class="total">4</span> Tasks</div>
                     </div>
 
                     <div class="award-card" data-club="yeso">
@@ -234,6 +185,7 @@
                             </svg>
                             <span class="progress-text">0%</span>
                         </div>
+                        <div class="tasks-count"><span class="completed">0</span> / <span class="total">4</span> Tasks</div>
                     </div>
 
                     <div class="award-card" data-club="bkb">
@@ -248,6 +200,7 @@
                             </svg>
                             <span class="progress-text">0%</span>
                         </div>
+                        <div class="tasks-count"><span class="completed">0</span> / <span class="total">4</span> Tasks</div>
                     </div>
 
                     <div class="award-card" data-club="math">
@@ -262,6 +215,7 @@
                             </svg>
                             <span class="progress-text">0%</span>
                         </div>
+                        <div class="tasks-count"><span class="completed">0</span> / <span class="total">4</span> Tasks</div>
                     </div>
 
                     <div class="award-card" data-club="literary">
@@ -276,6 +230,7 @@
                             </svg>
                             <span class="progress-text">0%</span>
                         </div>
+                        <div class="tasks-count"><span class="completed">0</span> / <span class="total">4</span> Tasks</div>
                     </div>
 
                     <div class="award-card" data-club="art">
@@ -290,6 +245,7 @@
                             </svg>
                             <span class="progress-text">0%</span>
                         </div>
+                        <div class="tasks-count"><span class="completed">0</span> / <span class="total">4</span> Tasks</div>
                     </div>
 
                     <div class="award-card" data-club="music">
@@ -304,559 +260,280 @@
                             </svg>
                             <span class="progress-text">0%</span>
                         </div>
+                        <div class="tasks-count"><span class="completed">0</span> / <span class="total">4</span> Tasks</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Game Results View -->
-        <div class="dashboard-view" id="view-results">
-            <div class="results-container">
-                <div class="results-header">
-                    <div class="trophy-animation">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h1>Game Complete!</h1>
+        <!-- Ranking View -->
+        <div class="dashboard-view" id="view-ranking">
+            <div class="ranking-container">
+                <div class="ranking-header">
+                    <h1><i class="fas fa-ranking-star"></i> Student Rankings</h1>
+                    <p>Based on completed tasks and achievements</p>
                 </div>
 
-                <div class="results-main">
-                    <div class="placement-card">
-                        <div class="placement-ring">
-                            <svg viewBox="0 0 200 200">
-                                <circle cx="100" cy="100" r="90" class="ring-bg"></circle>
-                                <circle cx="100" cy="100" r="90" class="ring-fill" id="placementRing"></circle>
-                            </svg>
-                            <div class="placement-value">
-                                <span class="rank-number" id="rankNumber">3</span>
-                                <span class="rank-suffix" id="rankSuffix">rd</span>
-                            </div>
+                <div class="ranking-stats">
+                    <div class="rank-stat">
+                        <div class="rank-stat-icon gold"><i class="fas fa-medal"></i></div>
+                        <div class="rank-stat-info">
+                            <h3 id="myRank">15</h3>
+                            <p>Your Rank</p>
                         </div>
-                        <h2>Placement</h2>
-                        <p id="placementText">3rd Place out of 100 players</p>
                     </div>
-
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <div class="stat-icon gold"><i class="fas fa-percentage"></i></div>
-                            <div class="stat-value" id="percentileValue">97%</div>
-                            <div class="stat-label">Percentile Rank</div>
-                            <div class="stat-desc">Top 3% of players</div>
+                    <div class="rank-stat">
+                        <div class="rank-stat-icon blue"><i class="fas fa-check-circle"></i></div>
+                        <div class="rank-stat-info">
+                            <h3 id="myTasks">12</h3>
+                            <p>Tasks Completed</p>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-icon blue"><i class="fas fa-bullseye"></i></div>
-                            <div class="stat-value" id="accuracyValue">85%</div>
-                            <div class="stat-label">Accuracy Score</div>
-                            <div class="stat-desc">850 / 1000 points</div>
+                    </div>
+                    <div class="rank-stat">
+                        <div class="rank-stat-icon green"><i class="fas fa-star"></i></div>
+                        <div class="rank-stat-info">
+                            <h3 id="myPoints">850</h3>
+                            <p>Total Points</p>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-icon green"><i class="fas fa-clock"></i></div>
-                            <div class="stat-value" id="timeValue">12:45</div>
-                            <div class="stat-label">Completion Time</div>
-                            <div class="stat-desc">Average: 15:30</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon purple"><i class="fas fa-fire"></i></div>
-                            <div class="stat-value" id="streakValue">5</div>
-                            <div class="stat-label">Best Streak</div>
-                            <div class="stat-desc">Consecutive correct answers</div>
+                    </div>
+                    <div class="rank-stat">
+                        <div class="rank-stat-icon purple"><i class="fas fa-trophy"></i></div>
+                        <div class="rank-stat-info">
+                            <h3 id="myAwards">3</h3>
+                            <p>Awards Earned</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="results-breakdown">
-                    <h3>Performance Breakdown</h3>
-                    <div class="breakdown-bars">
-                        <div class="breakdown-item">
-                            <span class="breakdown-label">Reaction Time</span>
-                            <div class="breakdown-bar"><div class="breakdown-fill" style="width: 85%"></div></div>
-                            <span class="breakdown-value">85%</span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="breakdown-label">Strategy</span>
-                            <div class="breakdown-bar"><div class="breakdown-fill" style="width: 78%"></div></div>
-                            <span class="breakdown-value">78%</span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="breakdown-label">Teamwork</span>
-                            <div class="breakdown-bar"><div class="breakdown-fill" style="width: 92%"></div></div>
-                            <span class="breakdown-value">92%</span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="breakdown-label">Resource Management</span>
-                            <div class="breakdown-bar"><div class="breakdown-fill" style="width: 70%"></div></div>
-                            <span class="breakdown-value">70%</span>
-                        </div>
+                <div class="ranking-table">
+                    <div class="ranking-table-header">
+                        <span class="col-rank">Rank</span>
+                        <span class="col-name">Student</span>
+                        <span class="col-tasks">Tasks</span>
+                        <span class="col-points">Points</span>
+                        <span class="col-awards">Awards</span>
                     </div>
-                </div>
-
-                <div class="results-actions">
-                    <button class="btn-primary" id="playAgainBtn"><i class="fas fa-redo"></i> Play Again</button>
-                    <button class="btn-secondary" id="viewLeaderboardBtn"><i class="fas fa-trophy"></i> Leaderboard</button>
-                    <button class="btn-secondary" id="shareResultsBtn"><i class="fas fa-share-alt"></i> Share Results</button>
+                    <div class="ranking-list" id="rankingList">
+                        <!-- Populated by JavaScript -->
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Admin Dashboard View -->
+        <!-- Portfolio View -->
+        <div class="dashboard-view" id="view-portfolio">
+            <div class="portfolio-container">
+                <div class="portfolio-header">
+                    <h1><i class="fas fa-folder-open"></i> My Portfolio</h1>
+                    <button class="btn-primary" id="uploadBtn"><i class="fas fa-upload"></i> Upload File</button>
+                </div>
+
+                <div class="portfolio-stats">
+                    <div class="portfolio-stat">
+                        <i class="fas fa-file"></i>
+                        <div>
+                            <h3>24</h3>
+                            <p>Total Files</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-stat">
+                        <i class="fas fa-image"></i>
+                        <div>
+                            <h3>8</h3>
+                            <p>Images</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-stat">
+                        <i class="fas fa-file-pdf"></i>
+                        <div>
+                            <h3>12</h3>
+                            <p>Documents</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-stat">
+                        <i class="fas fa-video"></i>
+                        <div>
+                            <h3>4</h3>
+                            <p>Videos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-grid" id="portfolioGrid">
+                    <div class="portfolio-item">
+                        <div class="item-preview"><i class="fas fa-file-pdf"></i></div>
+                        <div class="item-info">
+                            <h4>Resume_2026.pdf</h4>
+                            <p>2.4 MB • Aug 15, 2026</p>
+                        </div>
+                        <div class="item-actions">
+                            <button><i class="fas fa-eye"></i></button>
+                            <button><i class="fas fa-download"></i></button>
+                            <button><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="item-preview"><i class="fas fa-image"></i></div>
+                        <div class="item-info">
+                            <h4>Certificate_AWS.png</h4>
+                            <p>1.8 MB • Jul 20, 2026</p>
+                        </div>
+                        <div class="item-actions">
+                            <button><i class="fas fa-eye"></i></button>
+                            <button><i class="fas fa-download"></i></button>
+                            <button><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="item-preview"><i class="fas fa-file-code"></i></div>
+                        <div class="item-info">
+                            <h4>Project_Source.zip</h4>
+                            <p>15.2 MB • Jun 10, 2026</p>
+                        </div>
+                        <div class="item-actions">
+                            <button><i class="fas fa-eye"></i></button>
+                            <button><i class="fas fa-download"></i></button>
+                            <button><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="item-preview"><i class="fas fa-video"></i></div>
+                        <div class="item-info">
+                            <h4>Presentation_Final.mp4</h4>
+                            <p>45.6 MB • May 5, 2026</p>
+                        </div>
+                        <div class="item-actions">
+                            <button><i class="fas fa-eye"></i></button>
+                            <button><i class="fas fa-download"></i></button>
+                            <button><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin View -->
         <div class="dashboard-view" id="view-admin">
             <div class="admin-content">
                 <div class="admin-tabs">
-                    <button class="admin-tab active" data-tab="overview">
-                        <i class="fas fa-chart-line"></i> Overview
-                    </button>
-                    <button class="admin-tab" data-tab="players">
-                        <i class="fas fa-users"></i> Players
-                    </button>
-                    <button class="admin-tab" data-tab="sessions">
-                        <i class="fas fa-gamepad"></i> Sessions
-                    </button>
-                    <button class="admin-tab" data-tab="export">
-                        <i class="fas fa-download"></i> Export
-                    </button>
+                    <button class="admin-tab active" data-tab="overview"><i class="fas fa-chart-line"></i> Overview</button>
+                    <button class="admin-tab" data-tab="students"><i class="fas fa-users"></i> Students</button>
+                    <button class="admin-tab" data-tab="verify"><i class="fas fa-check-double"></i> Verify</button>
                 </div>
 
-                <!-- Overview Tab -->
                 <div class="admin-panel active" id="panel-overview">
                     <div class="stats-overview">
                         <div class="overview-card">
                             <div class="overview-icon blue"><i class="fas fa-users"></i></div>
-                            <div class="overview-info">
-                                <h3>1,234</h3>
-                                <p>Total Players</p>
-                            </div>
-                            <div class="overview-trend up"><i class="fas fa-arrow-up"></i> 12%</div>
+                            <div class="overview-info"><h3>156</h3><p>Total Students</p></div>
                         </div>
                         <div class="overview-card">
-                            <div class="overview-icon green"><i class="fas fa-gamepad"></i></div>
-                            <div class="overview-info">
-                                <h3>5,678</h3>
-                                <p>Game Sessions</p>
-                            </div>
-                            <div class="overview-trend up"><i class="fas fa-arrow-up"></i> 8%</div>
+                            <div class="overview-icon green"><i class="fas fa-check-circle"></i></div>
+                            <div class="overview-info"><h3>892</h3><p>Tasks Completed</p></div>
                         </div>
                         <div class="overview-card">
-                            <div class="overview-icon gold"><i class="fas fa-chart-bar"></i></div>
-                            <div class="overview-info">
-                                <h3>78%</h3>
-                                <p>Average Score</p>
-                            </div>
-                            <div class="overview-trend up"><i class="fas fa-arrow-up"></i> 3%</div>
+                            <div class="overview-icon gold"><i class="fas fa-trophy"></i></div>
+                            <div class="overview-info"><h3>234</h3><p>Awards Earned</p></div>
                         </div>
                         <div class="overview-card">
                             <div class="overview-icon purple"><i class="fas fa-clock"></i></div>
-                            <div class="overview-info">
-                                <h3>14:32</h3>
-                                <p>Avg. Completion</p>
-                            </div>
-                            <div class="overview-trend down"><i class="fas fa-arrow-down"></i> 5%</div>
-                        </div>
-                    </div>
-
-                    <div class="charts-section">
-                        <div class="chart-card">
-                            <h3>Score Distribution</h3>
-                            <div class="bar-chart">
-                                <div class="bar" style="height: 40%"><span>0-20%</span></div>
-                                <div class="bar" style="height: 60%"><span>20-40%</span></div>
-                                <div class="bar" style="height: 85%"><span>40-60%</span></div>
-                                <div class="bar" style="height: 95%"><span>60-80%</span></div>
-                                <div class="bar" style="height: 70%"><span>80-100%</span></div>
-                            </div>
-                        </div>
-                        <div class="chart-card">
-                            <h3>Recent Activity</h3>
-                            <div class="activity-list">
-                                <div class="activity-item">
-                                    <div class="activity-avatar"><i class="fas fa-user"></i></div>
-                                    <div class="activity-info">
-                                        <p><strong>Player #1234</strong> achieved 1st place</p>
-                                        <span>2 minutes ago</span>
-                                    </div>
-                                </div>
-                                <div class="activity-item">
-                                    <div class="activity-avatar"><i class="fas fa-user"></i></div>
-                                    <div class="activity-info">
-                                        <p><strong>Player #5678</strong> completed game session</p>
-                                        <span>5 minutes ago</span>
-                                    </div>
-                                </div>
-                                <div class="activity-item">
-                                    <div class="activity-avatar"><i class="fas fa-user"></i></div>
-                                    <div class="activity-info">
-                                        <p><strong>Player #9012</strong> achieved top 5%</p>
-                                        <span>10 minutes ago</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="overview-info"><h3>18</h3><p>Pending Verifications</p></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Players Tab -->
-                <div class="admin-panel" id="panel-players">
+                <div class="admin-panel" id="panel-students">
                     <div class="panel-header">
-                        <h2>Player Management</h2>
+                        <h2>Student Management</h2>
                         <div class="search-box">
                             <i class="fas fa-search"></i>
-                            <input type="text" id="searchPlayer" placeholder="Search by Player ID or Name...">
+                            <input type="text" id="searchStudent" placeholder="Search students...">
                         </div>
                     </div>
-                    <div class="filter-bar">
-                        <select id="filterPlacement">
-                            <option value="all">All Placements</option>
-                            <option value="top10">Top 10</option>
-                            <option value="top25">Top 25</option>
-                            <option value="top50">Top 50</option>
-                        </select>
-                        <select id="filterScore">
-                            <option value="all">All Scores</option>
-                            <option value="90+">90%+</option>
-                            <option value="70-89">70-89%</option>
-                            <option value="50-69">50-69%</option>
-                        </select>
-                        <button class="btn-filter" id="resetFilters"><i class="fas fa-times"></i> Reset</button>
-                    </div>
-                    <div class="players-table">
+                    <div class="students-table">
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Player ID</th>
-                                    <th>Name</th>
-                                    <th>Score</th>
-                                    <th>Placement</th>
-                                    <th>Percentile</th>
-                                    <th>Date</th>
-                                    <th>Actions</th>
+                                    <th>Rank</th>
+                                    <th>Student</th>
+                                    <th>Tasks Done</th>
+                                    <th>Points</th>
+                                    <th>Awards</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody id="playersTableBody"></tbody>
+                            <tbody id="studentsTableBody"></tbody>
                         </table>
                     </div>
-                    <div class="pagination">
-                        <button class="btn-page" id="prevPage"><i class="fas fa-chevron-left"></i></button>
-                        <span>Page <span id="currentPage">1</span> of <span id="totalPages">10</span></span>
-                        <button class="btn-page" id="nextPage"><i class="fas fa-chevron-right"></i></button>
-                    </div>
                 </div>
 
-                <!-- Sessions Tab -->
-                <div class="admin-panel" id="panel-sessions">
+                <div class="admin-panel" id="panel-verify">
                     <div class="panel-header">
-                        <h2>Game Sessions</h2>
+                        <h2>Pending Verifications</h2>
                     </div>
-                    <div class="sessions-list" id="sessionsList"></div>
-                </div>
-
-                <!-- Export Tab -->
-                <div class="admin-panel" id="panel-export">
-                    <div class="panel-header">
-                        <h2>Data Export</h2>
-                    </div>
-                    <div class="export-options">
-                        <div class="export-card">
-                            <div class="export-icon blue"><i class="fas fa-file-csv"></i></div>
-                            <h3>Export as CSV</h3>
-                            <p>Download player data in CSV format</p>
-                            <button class="btn-export" id="exportCSV"><i class="fas fa-download"></i> Download CSV</button>
-                        </div>
-                        <div class="export-card">
-                            <div class="export-icon green"><i class="fas fa-file-pdf"></i></div>
-                            <h3>Export as PDF</h3>
-                            <p>Generate detailed PDF report</p>
-                            <button class="btn-export" id="exportPDF"><i class="fas fa-download"></i> Download PDF</button>
-                        </div>
-                        <div class="export-card">
-                            <div class="export-icon purple"><i class="fas fa-file-alt"></i></div>
-                            <h3>Export as JSON</h3>
-                            <p>Raw data in JSON format</p>
-                            <button class="btn-export" id="exportJSON"><i class="fas fa-download"></i> Download JSON</button>
-                        </div>
-                    </div>
+                    <div class="verify-list" id="verifyList"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Club Modals -->
-    <div class="club-modal" id="modal-experto">
+    <!-- Club Modal -->
+    <div class="club-modal" id="clubModal">
         <div class="club-modal-content">
-            <div class="club-modal-header">
+            <div class="club-modal-header" id="clubModalHeader">
                 <div class="club-icon"><i class="fas fa-brain"></i></div>
-                <h2>ExperTO Club</h2>
-                <p>Leadership Award Tasks</p>
+                <h2 id="clubModalTitle">Club Name</h2>
+                <p id="clubModalSubtitle">Leadership Award Tasks</p>
                 <button class="close-club-modal"><i class="fas fa-times"></i></button>
             </div>
             <div class="club-modal-body">
-                <div class="task-list">
-                    <div class="task-item" data-task="1">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Organize Expert Talk Series</h4><p>Schedule and coordinate 3 expert talks</p></div>
-                        <span class="task-status">Pending</span>
+                <div class="task-list" id="taskList">
+                    <!-- Populated by JavaScript -->
+                </div>
+                <div class="modal-footer">
+                    <div class="tasks-progress">
+                        <span id="modalCompleted">0</span> / <span id="modalTotal">0</span> Tasks Completed
                     </div>
-                    <div class="task-item" data-task="2">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Create Club Handbook</h4><p>Develop comprehensive guide for new members</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                    <div class="task-item" data-task="3">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Lead Weekly Meetings</h4><p>Conduct and document weekly club meetings</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                    <div class="task-item" data-task="4">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Submit Achievement Report</h4><p>Compile and submit semester report</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
+                    <button class="btn-primary" id="saveTasks"><i class="fas fa-save"></i> Save Progress</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="club-modal" id="modal-sslg">
-        <div class="club-modal-content">
-            <div class="club-modal-header">
-                <div class="club-icon"><i class="fas fa-users"></i></div>
-                <h2>SSLG</h2>
-                <p>Leadership Award Tasks</p>
-                <button class="close-club-modal"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="club-modal-body">
-                <div class="task-list">
-                    <div class="task-item" data-task="1">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Lead Student Assembly</h4><p>Organize quarterly student assemblies</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                    <div class="task-item" data-task="2">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Develop Leadership Programs</h4><p>Create training modules for student leaders</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                    <div class="task-item" data-task="3">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Coordinate School Events</h4><p>Lead planning for major school celebrations</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="club-modal" id="modal-yeso">
-        <div class="club-modal-content">
-            <div class="club-modal-header">
-                <div class="club-icon"><i class="fas fa-seedling"></i></div>
-                <h2>YES-O</h2>
-                <p>Leadership Award Tasks</p>
-                <button class="close-club-modal"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="club-modal-body">
-                <div class="task-list">
-                    <div class="task-item" data-task="1">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Lead Environmental Campaign</h4><p>Organize school-wide awareness drive</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                    <div class="task-item" data-task="2">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Implement Recycling Program</h4><p>Set up recycling stations</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                    <div class="task-item" data-task="3">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Tree Planting Activity</h4><p>Coordinate quarterly tree planting</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="club-modal" id="modal-bkb">
-        <div class="club-modal-content">
-            <div class="club-modal-header">
-                <div class="club-icon"><i class="fas fa-heart-broken"></i></div>
-                <h2>BKB</h2>
-                <p>Barkada Kontra Bisyo</p>
-                <button class="close-club-modal"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="club-modal-body">
-                <div class="task-list">
-                    <div class="task-item" data-task="1">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Lead Anti-Drug Campaign</h4><p>Organize drug awareness seminars</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                    <div class="task-item" data-task="2">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Peer Counseling Sessions</h4><p>Conduct peer counseling</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                    <div class="task-item" data-task="3">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Community Outreach</h4><p>Lead community-based programs</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="club-modal" id="modal-math">
-        <div class="club-modal-content">
-            <div class="club-modal-header">
-                <div class="club-icon"><i class="fas fa-calculator"></i></div>
-                <h2>Math Club</h2>
-                <p>Leadership Award Tasks</p>
-                <button class="close-club-modal"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="club-modal-body">
-                <div class="task-list">
-                    <div class="task-item" data-task="1">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Organize Math Olympiad</h4><p>Lead Math Olympiad preparation</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                    <div class="task-item" data-task="2">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Math Tutorial Program</h4><p>Establish peer tutoring</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                    <div class="task-item" data-task="3">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Math Week Celebration</h4><p>Plan Math Week activities</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="club-modal" id="modal-literary">
-        <div class="club-modal-content">
-            <div class="club-modal-header">
-                <div class="club-icon"><i class="fas fa-book-open"></i></div>
-                <h2>Literary Club</h2>
-                <p>Leadership Award Tasks</p>
-                <button class="close-club-modal"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="club-modal-body">
-                <div class="task-list">
-                    <div class="task-item" data-task="1">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Organize Poetry Slam</h4><p>Lead monthly poetry reading</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                    <div class="task-item" data-task="2">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>School Publication</h4><p>Manage school literary publication</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                    <div class="task-item" data-task="3">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Writing Workshop</h4><p>Conduct creative writing workshops</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="club-modal" id="modal-art">
-        <div class="club-modal-content">
-            <div class="club-modal-header">
-                <div class="club-icon"><i class="fas fa-palette"></i></div>
-                <h2>Art Club</h2>
-                <p>Leadership Award Tasks</p>
-                <button class="close-club-modal"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="club-modal-body">
-                <div class="task-list">
-                    <div class="task-item" data-task="1">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Art Exhibition</h4><p>Curate student art exhibits</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                    <div class="task-item" data-task="2">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Mural Project</h4><p>Lead school mural design</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                    <div class="task-item" data-task="3">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Art Workshop</h4><p>Conduct art techniques workshop</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="club-modal" id="modal-music">
-        <div class="club-modal-content">
-            <div class="club-modal-header">
-                <div class="club-icon"><i class="fas fa-music"></i></div>
-                <h2>Music Club</h2>
-                <p>Leadership Award Tasks</p>
-                <button class="close-club-modal"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="club-modal-body">
-                <div class="task-list">
-                    <div class="task-item" data-task="1">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>School Choir Training</h4><p>Lead choir practice and performances</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                    <div class="task-item" data-task="2">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Music Concert</h4><p>Organize semester music concert</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                    <div class="task-item" data-task="3">
-                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
-                        <div class="task-info"><h4>Band Formation</h4><p>Help establish school band</p></div>
-                        <span class="task-status">Pending</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Player Detail Modal -->
-    <div class="modal-overlay" id="playerModal">
-        <div class="modal-content player-detail">
+    <!-- Student Detail Modal -->
+    <div class="modal-overlay" id="studentModal">
+        <div class="modal-content student-detail">
             <div class="modal-header">
-                <h2>Player Details</h2>
-                <button class="close-modal" id="closePlayerModal"><i class="fas fa-times"></i></button>
+                <h2>Student Profile</h2>
+                <button class="close-modal" id="closeStudentModal"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body">
-                <div class="player-profile">
-                    <div class="player-avatar"><i class="fas fa-user"></i></div>
-                    <h3 id="modalPlayerName">Player #1234</h3>
-                    <p id="modalPlayerId">ID: 1234</p>
+                <div class="student-profile">
+                    <div class="student-avatar"><i class="fas fa-user"></i></div>
+                    <h3 id="modalStudentName">Student Name</h3>
+                    <p id="modalStudentRank">Rank #15</p>
                 </div>
-                <div class="player-stats">
-                    <div class="player-stat">
-                        <span class="stat-label">Total Games</span>
-                        <span class="stat-value" id="modalTotalGames">25</span>
+                <div class="student-stats">
+                    <div class="student-stat">
+                        <span class="stat-label">Tasks Completed</span>
+                        <span class="stat-value" id="modalTasks">12</span>
                     </div>
-                    <div class="player-stat">
-                        <span class="stat-label">Average Score</span>
-                        <span class="stat-value" id="modalAvgScore">82%</span>
+                    <div class="student-stat">
+                        <span class="stat-label">Total Points</span>
+                        <span class="stat-value" id="modalPoints">850</span>
                     </div>
-                    <div class="player-stat">
-                        <span class="stat-label">Best Placement</span>
-                        <span class="stat-value" id="modalBestPlace">1st</span>
+                    <div class="student-stat">
+                        <span class="stat-label">Awards Earned</span>
+                        <span class="stat-value" id="modalAwards">3</span>
                     </div>
-                    <div class="player-stat">
-                        <span class="stat-label">Win Rate</span>
-                        <span class="stat-value" id="modalWinRate">15%</span>
+                    <div class="student-stat">
+                        <span class="stat-label">Completion Rate</span>
+                        <span class="stat-value" id="modalRate">75%</span>
                     </div>
                 </div>
-                <div class="player-history">
-                    <h4>Game History</h4>
-                    <div class="history-list" id="modalHistoryList"></div>
+                <div class="student-awards">
+                    <h4>Earned Awards</h4>
+                    <div class="awards-list" id="modalAwardsList"></div>
                 </div>
             </div>
         </div>

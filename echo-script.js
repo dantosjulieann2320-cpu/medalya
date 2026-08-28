@@ -1,15 +1,124 @@
 // EchoHonors - Complete JavaScript
 
-// ==================== CALCULATION LOGIC ====================
+// ==================== DATA ====================
 
-function calculatePlacement(playerScore, allScores) {
-    const sortedScores = [...allScores].sort((a, b) => b - a);
-    return sortedScores.indexOf(playerScore) + 1;
-}
+const clubsData = {
+    experto: {
+        name: 'ExperTO Club',
+        icon: 'fas fa-brain',
+        subtitle: 'Leadership Award Tasks',
+        tasks: [
+            { id: 1, title: 'Organize Expert Talk Series', desc: 'Schedule and coordinate 3 expert talks for the semester', completed: false },
+            { id: 2, title: 'Create Club Handbook', desc: 'Develop comprehensive guide for new members', completed: false },
+            { id: 3, title: 'Lead Weekly Meetings', desc: 'Conduct and document weekly club meetings', completed: false },
+            { id: 4, title: 'Coordinate with Faculty', desc: 'Establish regular communication with club adviser', completed: false },
+            { id: 5, title: 'Submit Achievement Report', desc: 'Compile and submit semester achievement report', completed: false }
+        ]
+    },
+    sslg: {
+        name: 'SSLG',
+        icon: 'fas fa-users',
+        subtitle: 'Leadership Award Tasks',
+        tasks: [
+            { id: 1, title: 'Lead Student Assembly', desc: 'Organize and lead quarterly student assemblies', completed: false },
+            { id: 2, title: 'Develop Leadership Programs', desc: 'Create training modules for student leaders', completed: false },
+            { id: 3, title: 'Coordinate School Events', desc: 'Lead planning for major school celebrations', completed: false },
+            { id: 4, title: 'Represent Student Body', desc: 'Attend meetings with school administration', completed: false }
+        ]
+    },
+    yeso: {
+        name: 'YES-O',
+        icon: 'fas fa-seedling',
+        subtitle: 'Leadership Award Tasks',
+        tasks: [
+            { id: 1, title: 'Lead Environmental Campaign', desc: 'Organize school-wide environmental awareness drive', completed: false },
+            { id: 2, title: 'Implement Recycling Program', desc: 'Set up recycling stations and monitoring system', completed: false },
+            { id: 3, title: 'Tree Planting Activity', desc: 'Coordinate quarterly tree planting events', completed: false },
+            { id: 4, title: 'Green School Documentation', desc: 'Document and report environmental initiatives', completed: false }
+        ]
+    },
+    bkb: {
+        name: 'BKB',
+        icon: 'fas fa-heart-broken',
+        subtitle: 'Barkada Kontra Bisyo Leadership Award',
+        tasks: [
+            { id: 1, title: 'Lead Anti-Drug Campaign', desc: 'Organize drug awareness seminars and activities', completed: false },
+            { id: 2, title: 'Peer Counseling Sessions', desc: 'Conduct regular peer counseling for at-risk students', completed: false },
+            { id: 3, title: 'Community Outreach', desc: 'Lead community-based anti-vise programs', completed: false },
+            { id: 4, title: 'Submit Advocacy Report', desc: 'Document and present club achievements', completed: false }
+        ]
+    },
+    math: {
+        name: 'Math Club',
+        icon: 'fas fa-calculator',
+        subtitle: 'Leadership Award Tasks',
+        tasks: [
+            { id: 1, title: 'Organize Math Olympiad', desc: 'Lead the school\'s Math Olympiad preparation team', completed: false },
+            { id: 2, title: 'Math Tutorial Program', desc: 'Establish peer tutoring for struggling students', completed: false },
+            { id: 3, title: 'Math Week Celebration', desc: 'Plan and execute Math Week activities', completed: false },
+            { id: 4, title: 'Math Challenge Documentation', desc: 'Record competition results and achievements', completed: false }
+        ]
+    },
+    literary: {
+        name: 'Literary Club',
+        icon: 'fas fa-book-open',
+        subtitle: 'Leadership Award Tasks',
+        tasks: [
+            { id: 1, title: 'Organize Poetry Slam', desc: 'Lead monthly poetry reading events', completed: false },
+            { id: 2, title: 'School Publication', desc: 'Manage and edit school literary publication', completed: false },
+            { id: 3, title: 'Writing Workshop', desc: 'Conduct creative writing workshops', completed: false },
+            { id: 4, title: 'Literary Festival', desc: 'Organize annual literary festival', completed: false }
+        ]
+    },
+    art: {
+        name: 'Art Club',
+        icon: 'fas fa-palette',
+        subtitle: 'Leadership Award Tasks',
+        tasks: [
+            { id: 1, title: 'Art Exhibition', desc: 'Curate and organize student art exhibits', completed: false },
+            { id: 2, title: 'Mural Project', desc: 'Lead school mural design and painting', completed: false },
+            { id: 3, title: 'Art Workshop', desc: 'Conduct basic art techniques workshop', completed: false },
+            { id: 4, title: 'Art Competition Entry', desc: 'Prepare entries for inter-school competitions', completed: false }
+        ]
+    },
+    music: {
+        name: 'Music Club',
+        icon: 'fas fa-music',
+        subtitle: 'Leadership Award Tasks',
+        tasks: [
+            { id: 1, title: 'School Choir Training', desc: 'Lead choir practice and performances', completed: false },
+            { id: 2, title: 'Music Concert', desc: 'Organize semester music concert', completed: false },
+            { id: 3, title: 'Band Formation', desc: 'Help establish and train school band', completed: false },
+            { id: 4, title: 'Music Festival Participation', desc: 'Prepare and lead team for competitions', completed: false }
+        ]
+    }
+};
 
-function calculatePercentile(placement, totalPlayers) {
-    return Math.round(((totalPlayers - placement) / totalPlayers) * 100 * 10) / 10;
-}
+const studentsData = [
+    { id: 'USR001', name: 'Juan Dela Cruz', tasks: 18, points: 1250, awards: 6 },
+    { id: 'USR002', name: 'Maria Santos', tasks: 16, points: 1100, awards: 5 },
+    { id: 'USR003', name: 'Jose Reyes', tasks: 15, points: 1050, awards: 5 },
+    { id: 'USR004', name: 'Ana Garcia', tasks: 14, points: 980, awards: 4 },
+    { id: 'USR005', name: 'Pedro Mendoza', tasks: 13, points: 920, awards: 4 },
+    { id: 'USR006', name: 'Sofia Lim', tasks: 12, points: 850, awards: 3 },
+    { id: 'USR007', name: 'Miguel Torres', tasks: 11, points: 780, awards: 3 },
+    { id: 'USR008', name: 'Isabella Cruz', tasks: 10, points: 720, awards: 3 },
+    { id: 'USR009', name: 'Carlos Ramos', tasks: 9, points: 650, awards: 2 },
+    { id: 'USR010', name: 'Elena Aquino', tasks: 8, points: 580, awards: 2 },
+    { id: 'USR011', name: 'Ricardo Bautista', tasks: 7, points: 510, awards: 2 },
+    { id: 'USR012', name: 'Camille Tan', tasks: 6, points: 440, awards: 1 },
+    { id: 'USR013', name: 'Daniel Villanueva', tasks: 5, points: 370, awards: 1 },
+    { id: 'USR014', name: 'Grace Fernandez', tasks: 4, points: 300, awards: 1 },
+    { id: 'USR015', name: 'Mark Gonzales', tasks: 3, points: 230, awards: 0 }
+];
+
+const verifyData = [
+    { id: 1, student: 'Juan Dela Cruz', task: 'Organize Expert Talk Series', club: 'ExperTO', date: 'Aug 25, 2026' },
+    { id: 2, student: 'Maria Santos', task: 'Lead Student Assembly', club: 'SSLG', date: 'Aug 24, 2026' },
+    { id: 3, student: 'Jose Reyes', task: 'Lead Environmental Campaign', club: 'YES-O', date: 'Aug 23, 2026' }
+];
+
+// ==================== HELPER FUNCTIONS ====================
 
 function getRankSuffix(rank) {
     if (rank % 10 === 1 && rank % 100 !== 11) return 'st';
@@ -17,32 +126,6 @@ function getRankSuffix(rank) {
     if (rank % 10 === 3 && rank % 100 !== 13) return 'rd';
     return 'th';
 }
-
-function formatTime(seconds) {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
-}
-
-// ==================== SAMPLE DATA ====================
-
-const samplePlayers = [
-    { id: 'USR001', name: 'Juan Dela Cruz', score: 950, placement: 1, percentile: 99.9, date: '2026-08-28', games: 45 },
-    { id: 'USR002', name: 'Maria Santos', score: 920, placement: 2, percentile: 99.8, date: '2026-08-28', games: 38 },
-    { id: 'USR003', name: 'Jose Reyes', score: 895, placement: 3, percentile: 99.7, date: '2026-08-28', games: 52 },
-    { id: 'USR004', name: 'Ana Garcia', score: 870, placement: 4, percentile: 99.6, date: '2026-08-27', games: 41 },
-    { id: 'USR005', name: 'Pedro Mendoza', score: 845, placement: 5, percentile: 99.5, date: '2026-08-27', games: 35 },
-    { id: 'USR006', name: 'Sofia Lim', score: 820, placement: 6, percentile: 99.4, date: '2026-08-27', games: 29 },
-    { id: 'USR007', name: 'Miguel Torres', score: 795, placement: 7, percentile: 99.3, date: '2026-08-26', games: 48 },
-    { id: 'USR008', name: 'Isabella Cruz', score: 770, placement: 8, percentile: 99.2, date: '2026-08-26', games: 33 },
-    { id: 'USR009', name: 'Carlos Ramos', score: 745, placement: 9, percentile: 99.1, date: '2026-08-26', games: 42 },
-    { id: 'USR010', name: 'Elena Aquino', score: 720, placement: 10, percentile: 99.0, date: '2026-08-25', games: 37 },
-    { id: 'USR011', name: 'Ricardo Bautista', score: 695, placement: 11, percentile: 98.9, date: '2026-08-25', games: 28 },
-    { id: 'USR012', name: 'Camille Tan', score: 670, placement: 12, percentile: 98.8, date: '2026-08-25', games: 44 },
-    { id: 'USR013', name: 'Daniel Villanueva', score: 645, placement: 13, percentile: 98.7, date: '2026-08-24', games: 31 },
-    { id: 'USR014', name: 'Grace Fernandez', score: 620, placement: 14, percentile: 98.6, date: '2026-08-24', games: 39 },
-    { id: 'USR015', name: 'Mark Gonzales', score: 595, placement: 15, percentile: 98.5, date: '2026-08-24', games: 46 }
-];
 
 // ==================== MAIN APP ====================
 
@@ -63,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutBtn = document.getElementById('logoutBtn');
     const userName = document.getElementById('userName');
 
-    // Loading Screen Animation
+    // Loading Screen
     setTimeout(() => {
         loadingScreen.classList.add('hidden');
         landingPage.classList.add('active');
@@ -72,7 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Auth Modal
     openAuthModal.addEventListener('click', () => {
         authModal.classList.add('active');
-        createConfetti();
     });
 
     closeAuthModal.addEventListener('click', () => {
@@ -132,8 +214,9 @@ document.addEventListener('DOMContentLoaded', () => {
         userName.textContent = name;
         createConfetti();
         initProgressRings();
-        renderPlayersTable();
-        renderSessionsList();
+        renderRanking();
+        renderStudentsTable();
+        renderVerifyList();
     }
 
     // Logout
@@ -168,340 +251,259 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Club Modals
-    const awardCards = document.querySelectorAll('.award-card');
-    const clubModals = document.querySelectorAll('.club-modal');
-    const closeClubModals = document.querySelectorAll('.close-club-modal');
+    // Club Modal
+    const clubModal = document.getElementById('clubModal');
+    const closeClubModal = document.querySelector('.close-club-modal');
 
-    awardCards.forEach(card => {
+    document.querySelectorAll('.award-card').forEach(card => {
         card.addEventListener('click', () => {
             const club = card.dataset.club;
-            const modal = document.getElementById(`modal-${club}`);
-            if (modal) {
-                modal.classList.add('active');
-                createConfetti();
-            }
+            openClubModal(club);
         });
     });
 
-    closeClubModals.forEach(btn => {
-        btn.addEventListener('click', () => {
-            btn.closest('.club-modal').classList.remove('active');
-        });
+    closeClubModal.addEventListener('click', () => {
+        clubModal.classList.remove('active');
     });
 
-    clubModals.forEach(modal => {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-            }
-        });
+    clubModal.addEventListener('click', (e) => {
+        if (e.target === clubModal) {
+            clubModal.classList.remove('active');
+        }
     });
 
-    // Task Checkboxes
-    document.querySelectorAll('.task-check input').forEach(checkbox => {
-        checkbox.addEventListener('change', () => {
-            const taskItem = checkbox.closest('.task-item');
-            const status = taskItem.querySelector('.task-status');
-            if (checkbox.checked) {
-                taskItem.classList.add('completed');
-                status.textContent = 'Completed';
-                createConfetti();
-                updateProgress(taskItem.closest('.club-modal'));
-            } else {
-                taskItem.classList.remove('completed');
-                status.textContent = 'Pending';
-                updateProgress(taskItem.closest('.club-modal'));
-            }
-        });
-    });
+    function openClubModal(clubKey) {
+        const club = clubsData[clubKey];
+        if (!club) return;
 
-    function updateProgress(modal) {
-        const club = modal.id.replace('modal-', '');
-        const tasks = modal.querySelectorAll('.task-item');
-        const completed = modal.querySelectorAll('.task-item.completed');
-        const progress = Math.round((completed.length / tasks.length) * 100);
-        const awardCard = document.querySelector(`.award-card[data-club="${club}"]`);
-        if (awardCard) {
-            const progressFill = awardCard.querySelector('.progress-fill');
-            const progressText = awardCard.querySelector('.progress-text');
+        document.getElementById('clubModalTitle').textContent = club.name;
+        document.getElementById('clubModalSubtitle').textContent = club.subtitle;
+        document.querySelector('#clubModal .club-icon i').className = club.icon;
+
+        const taskList = document.getElementById('taskList');
+        taskList.innerHTML = club.tasks.map(task => `
+            <div class="task-item ${task.completed ? 'completed' : ''}" data-task="${task.id}">
+                <div class="task-check">
+                    <input type="checkbox" ${task.completed ? 'checked' : ''}>
+                    <span class="checkmark"></span>
+                </div>
+                <div class="task-info">
+                    <h4>${task.title}</h4>
+                    <p>${task.desc}</p>
+                </div>
+                <span class="task-status">${task.completed ? 'Completed' : 'Pending'}</span>
+            </div>
+        `).join('');
+
+        // Update modal progress
+        const completed = club.tasks.filter(t => t.completed).length;
+        document.getElementById('modalCompleted').textContent = completed;
+        document.getElementById('modalTotal').textContent = club.tasks.length;
+
+        // Add event listeners to checkboxes
+        taskList.querySelectorAll('.task-check input').forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const taskItem = checkbox.closest('.task-item');
+                const status = taskItem.querySelector('.task-status');
+                if (checkbox.checked) {
+                    taskItem.classList.add('completed');
+                    status.textContent = 'Completed';
+                    createConfetti();
+                } else {
+                    taskItem.classList.remove('completed');
+                    status.textContent = 'Pending';
+                }
+                updateModalProgress(clubKey);
+                updateCardProgress(clubKey);
+            });
+        });
+
+        clubModal.classList.add('active');
+    }
+
+    function updateModalProgress(clubKey) {
+        const club = clubsData[clubKey];
+        const completed = document.querySelectorAll('#taskList .task-item.completed').length;
+        document.getElementById('modalCompleted').textContent = completed;
+    }
+
+    function updateCardProgress(clubKey) {
+        const club = clubsData[clubKey];
+        const completed = document.querySelectorAll('#taskList .task-item.completed').length;
+        const progress = Math.round((completed / club.tasks.length) * 100);
+        
+        const card = document.querySelector(`.award-card[data-club="${clubKey}"]`);
+        if (card) {
+            const progressFill = card.querySelector('.progress-fill');
+            const progressText = card.querySelector('.progress-text');
+            const completedSpan = card.querySelector('.completed');
             const circumference = 283;
             const offset = circumference - (progress / 100) * circumference;
             progressFill.style.strokeDashoffset = offset;
             progressText.textContent = `${progress}%`;
+            completedSpan.textContent = completed;
         }
     }
 
     function initProgressRings() {
         document.querySelectorAll('.award-card').forEach(card => {
             const club = card.dataset.club;
-            const modal = document.getElementById(`modal-${club}`);
-            if (modal) updateProgress(modal);
+            updateCardProgress(club);
         });
     }
 
-    // Game Results
-    document.getElementById('playAgainBtn')?.addEventListener('click', () => {
-        alert('Starting new game...');
+    // Save Tasks
+    document.getElementById('saveTasks')?.addEventListener('click', () => {
+        createConfetti();
+        alert('Progress saved successfully!');
     });
 
-    document.getElementById('viewLeaderboardBtn')?.addEventListener('click', () => {
-        alert('Opening leaderboard...');
-    });
+    // Ranking
+    function renderRanking() {
+        const list = document.getElementById('rankingList');
+        if (!list) return;
 
-    document.getElementById('shareResultsBtn')?.addEventListener('click', () => {
-        navigator.clipboard.writeText(window.location.href);
-        alert('Link copied to clipboard!');
-    });
+        list.innerHTML = studentsData.map((student, index) => {
+            const rank = index + 1;
+            let rankClass = '';
+            if (rank === 1) rankClass = '';
+            else if (rank === 2) rankClass = 'silver';
+            else if (rank === 3) rankClass = 'bronze';
 
-    // Show demo results
-    setTimeout(() => {
-        if (dashboard && !dashboard.classList.contains('hidden')) {
-            showGameResults({
-                rank: 3,
-                totalPlayers: 100,
-                score: 850,
-                accuracy: 85,
-                time: 765,
-                streak: 5
-            });
-        }
-    }, 5000);
+            return `
+                <div class="ranking-item ${rank <= 3 ? 'top-3' : ''}">
+                    <span class="rank ${rankClass}">#${rank}</span>
+                    <div class="student-info">
+                        <div class="student-avatar"><i class="fas fa-user"></i></div>
+                        <div>
+                            <div class="student-name">${student.name}</div>
+                            <div class="student-id">${student.id}</div>
+                        </div>
+                    </div>
+                    <span class="tasks">${student.tasks}</span>
+                    <span class="points">${student.points}</span>
+                    <span class="awards">${student.awards}</span>
+                </div>
+            `;
+        }).join('');
 
-    function showGameResults(data) {
-        const { rank, totalPlayers, score, accuracy, time, streak } = data;
-        const percentile = calculatePercentile(rank, totalPlayers);
-        const suffix = getRankSuffix(rank);
-
-        document.getElementById('rankNumber').textContent = rank;
-        document.getElementById('rankSuffix').textContent = suffix;
-        document.getElementById('placementText').textContent = `${rank}${suffix} Place out of ${totalPlayers} players`;
-        document.getElementById('percentileValue').textContent = `${percentile}%`;
-        document.getElementById('accuracyValue').textContent = `${accuracy}%`;
-        document.getElementById('timeValue').textContent = formatTime(time);
-        document.getElementById('streakValue').textContent = streak;
-
-        // Animate placement ring
-        const ring = document.getElementById('placementRing');
-        if (ring) {
-            const circumference = 565;
-            const offset = circumference - (percentile / 100) * circumference;
-            setTimeout(() => { ring.style.strokeDashoffset = offset; }, 100);
-        }
-
-        // Switch to results view
-        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-        document.querySelector('.nav-link[data-view="results"]').classList.add('active');
-        document.querySelectorAll('.dashboard-view').forEach(v => v.classList.remove('active'));
-        document.getElementById('view-results').classList.add('active');
+        // Update current user stats (assuming rank 6)
+        document.getElementById('myRank').textContent = '6';
+        document.getElementById('myTasks').textContent = '12';
+        document.getElementById('myPoints').textContent = '850';
+        document.getElementById('myAwards').textContent = '3';
     }
 
-    // Admin - Players Table
-    let currentPage = 1;
-    const itemsPerPage = 10;
-    let filteredPlayers = [...samplePlayers];
-
-    function renderPlayersTable() {
-        const tbody = document.getElementById('playersTableBody');
+    // Students Table (Admin)
+    function renderStudentsTable() {
+        const tbody = document.getElementById('studentsTableBody');
         if (!tbody) return;
 
-        const start = (currentPage - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
-        const players = filteredPlayers.slice(start, end);
-
-        tbody.innerHTML = players.map(player => {
+        tbody.innerHTML = studentsData.map((student, index) => {
+            const rank = index + 1;
             let badgeClass = '';
-            if (player.placement === 1) badgeClass = 'gold';
-            else if (player.placement === 2) badgeClass = 'silver';
-            else if (player.placement === 3) badgeClass = 'bronze';
+            if (rank === 1) badgeClass = 'gold';
+            else if (rank === 2) badgeClass = 'silver';
+            else if (rank === 3) badgeClass = 'bronze';
 
             return `
                 <tr>
-                    <td>${player.id}</td>
-                    <td>${player.name}</td>
-                    <td>${(player.score / 10).toFixed(1)}%</td>
-                    <td><span class="badge ${badgeClass}">${player.placement}${getRankSuffix(player.placement)}</span></td>
-                    <td>Top ${(100 - player.percentile).toFixed(1)}%</td>
-                    <td>${player.date}</td>
-                    <td><button class="btn-view" onclick="viewPlayer('${player.id}')">View</button></td>
+                    <td><span class="badge ${badgeClass}">#${rank}</span></td>
+                    <td>${student.name}</td>
+                    <td>${student.tasks}</td>
+                    <td>${student.points}</td>
+                    <td>${student.awards}</td>
+                    <td><button class="btn-view" onclick="viewStudent('${student.id}')">View</button></td>
                 </tr>
             `;
         }).join('');
-
-        const totalPages = Math.ceil(filteredPlayers.length / itemsPerPage);
-        document.getElementById('currentPage').textContent = currentPage;
-        document.getElementById('totalPages').textContent = totalPages;
     }
 
-    // Search
-    document.getElementById('searchPlayer')?.addEventListener('input', (e) => {
+    // Search Students
+    document.getElementById('searchStudent')?.addEventListener('input', (e) => {
         const query = e.target.value.toLowerCase();
-        filteredPlayers = samplePlayers.filter(p => 
-            p.id.toLowerCase().includes(query) || p.name.toLowerCase().includes(query)
+        const filtered = studentsData.filter(s => 
+            s.name.toLowerCase().includes(query) || s.id.toLowerCase().includes(query)
         );
-        currentPage = 1;
-        renderPlayersTable();
-    });
-
-    // Filters
-    document.getElementById('filterPlacement')?.addEventListener('change', applyFilters);
-    document.getElementById('filterScore')?.addEventListener('change', applyFilters);
-    document.getElementById('resetFilters')?.addEventListener('click', () => {
-        document.getElementById('filterPlacement').value = 'all';
-        document.getElementById('filterScore').value = 'all';
-        document.getElementById('searchPlayer').value = '';
-        filteredPlayers = [...samplePlayers];
-        currentPage = 1;
-        renderPlayersTable();
-    });
-
-    function applyFilters() {
-        const placementFilter = document.getElementById('filterPlacement').value;
-        const scoreFilter = document.getElementById('filterScore').value;
-
-        filteredPlayers = samplePlayers.filter(player => {
-            if (placementFilter !== 'all') {
-                const max = parseInt(placementFilter.replace('top', ''));
-                if (player.placement > max) return false;
-            }
-            if (scoreFilter !== 'all') {
-                if (scoreFilter === '90+' && player.score < 900) return false;
-                if (scoreFilter === '70-89' && (player.score < 700 || player.score >= 900)) return false;
-                if (scoreFilter === '50-69' && (player.score < 500 || player.score >= 700)) return false;
-            }
-            return true;
-        });
-        currentPage = 1;
-        renderPlayersTable();
-    }
-
-    // Pagination
-    document.getElementById('prevPage')?.addEventListener('click', () => {
-        if (currentPage > 1) { currentPage--; renderPlayersTable(); }
-    });
-
-    document.getElementById('nextPage')?.addEventListener('click', () => {
-        const totalPages = Math.ceil(filteredPlayers.length / itemsPerPage);
-        if (currentPage < totalPages) { currentPage++; renderPlayersTable(); }
-    });
-
-    // View Player
-    window.viewPlayer = function(playerId) {
-        const player = samplePlayers.find(p => p.id === playerId);
-        if (!player) return;
-
-        document.getElementById('modalPlayerName').textContent = player.name;
-        document.getElementById('modalPlayerId').textContent = `ID: ${player.id}`;
-        document.getElementById('modalTotalGames').textContent = player.games;
-        document.getElementById('modalAvgScore').textContent = `${(player.score / 10).toFixed(1)}%`;
-        document.getElementById('modalBestPlace').textContent = `${player.placement}${getRankSuffix(player.placement)}`;
-        document.getElementById('modalWinRate').textContent = `${Math.floor(Math.random() * 20 + 5)}%`;
-
-        const historyList = document.getElementById('modalHistoryList');
-        historyList.innerHTML = Array.from({ length: 5 }, (_, i) => {
-            const place = Math.floor(Math.random() * 50 + 1);
-            const score = Math.floor(Math.random() * 300 + 700);
-            const date = new Date(Date.now() - i * 86400000).toLocaleDateString();
+        const tbody = document.getElementById('studentsTableBody');
+        tbody.innerHTML = filtered.map((student, index) => {
+            const rank = studentsData.indexOf(student) + 1;
             return `
-                <div class="history-item">
-                    <span class="placement">${place}${getRankSuffix(place)}</span>
-                    <span class="score">${(score / 10).toFixed(1)}%</span>
-                    <span class="date">${date}</span>
-                </div>
+                <tr>
+                    <td><span class="badge">#${rank}</span></td>
+                    <td>${student.name}</td>
+                    <td>${student.tasks}</td>
+                    <td>${student.points}</td>
+                    <td>${student.awards}</td>
+                    <td><button class="btn-view" onclick="viewStudent('${student.id}')">View</button></td>
+                </tr>
             `;
         }).join('');
-
-        document.getElementById('playerModal').classList.add('active');
-    };
-
-    document.getElementById('closePlayerModal')?.addEventListener('click', () => {
-        document.getElementById('playerModal').classList.remove('active');
     });
 
-    document.getElementById('playerModal')?.addEventListener('click', (e) => {
-        if (e.target.id === 'playerModal') {
-            document.getElementById('playerModal').classList.remove('active');
+    // View Student
+    window.viewStudent = function(studentId) {
+        const student = studentsData.find(s => s.id === studentId);
+        if (!student) return;
+
+        const rank = studentsData.indexOf(student) + 1;
+        document.getElementById('modalStudentName').textContent = student.name;
+        document.getElementById('modalStudentRank').textContent = `Rank #${rank}`;
+        document.getElementById('modalTasks').textContent = student.tasks;
+        document.getElementById('modalPoints').textContent = student.points;
+        document.getElementById('modalAwards').textContent = student.awards;
+        document.getElementById('modalRate').textContent = `${Math.round((student.tasks / 18) * 100)}%`;
+
+        // Generate awards list
+        const awardsList = document.getElementById('modalAwardsList');
+        const possibleAwards = ['ExperTO', 'SSLG', 'YES-O', 'BKB', 'Math Club', 'Literary Club', 'Art Club', 'Music Club'];
+        const earnedAwards = possibleAwards.slice(0, student.awards);
+        awardsList.innerHTML = earnedAwards.map(award => `
+            <span class="award-badge"><i class="fas fa-trophy"></i> ${award}</span>
+        `).join('');
+
+        document.getElementById('studentModal').classList.add('active');
+    };
+
+    document.getElementById('closeStudentModal')?.addEventListener('click', () => {
+        document.getElementById('studentModal').classList.remove('active');
+    });
+
+    document.getElementById('studentModal')?.addEventListener('click', (e) => {
+        if (e.target.id === 'studentModal') {
+            document.getElementById('studentModal').classList.remove('active');
         }
     });
 
-    // Sessions List
-    function renderSessionsList() {
-        const list = document.getElementById('sessionsList');
+    // Verify List (Admin)
+    function renderVerifyList() {
+        const list = document.getElementById('verifyList');
         if (!list) return;
 
-        const sessions = [
-            { id: 'SES001', players: 100, winner: 'Juan Dela Cruz', score: 950, date: '2026-08-28 14:30' },
-            { id: 'SES002', players: 85, winner: 'Maria Santos', score: 920, date: '2026-08-28 13:15' },
-            { id: 'SES003', players: 120, winner: 'Jose Reyes', score: 895, date: '2026-08-28 11:00' },
-            { id: 'SES004', players: 95, winner: 'Ana Garcia', score: 870, date: '2026-08-27 16:45' },
-            { id: 'SES005', players: 110, winner: 'Pedro Mendoza', score: 845, date: '2026-08-27 15:30' }
-        ];
-
-        list.innerHTML = sessions.map(session => `
-            <div class="session-card">
-                <div class="session-info">
-                    <h4>Session ${session.id}</h4>
-                    <p>${session.date}</p>
+        list.innerHTML = verifyData.map(item => `
+            <div class="verify-item">
+                <div class="verify-info">
+                    <h4>${item.student} - ${item.task}</h4>
+                    <p>${item.club} • ${item.date}</p>
                 </div>
-                <div class="session-stats">
-                    <div class="session-stat">
-                        <div class="value">${session.players}</div>
-                        <div class="label">Players</div>
-                    </div>
-                    <div class="session-stat">
-                        <div class="value">${session.winner.split(' ')[0]}</div>
-                        <div class="label">Winner</div>
-                    </div>
-                    <div class="session-stat">
-                        <div class="value">${(session.score / 10).toFixed(1)}%</div>
-                        <div class="label">Top Score</div>
-                    </div>
+                <div class="verify-actions">
+                    <button class="btn-approve" onclick="approveTask(${item.id})"><i class="fas fa-check"></i> Approve</button>
+                    <button class="btn-reject" onclick="rejectTask(${item.id})"><i class="fas fa-times"></i> Reject</button>
                 </div>
             </div>
         `).join('');
     }
 
-    // Export
-    document.getElementById('exportCSV')?.addEventListener('click', () => {
-        const headers = ['user_id', 'score', 'placement', 'percentile_rank', 'timestamp'];
-        const rows = samplePlayers.map(p => [p.id, p.score, p.placement, p.percentile, `${p.date}T00:00:00Z`]);
-        const csv = [headers, ...rows].map(row => row.join(',')).join('\n');
-        downloadFile(csv, 'echohonors_data.csv', 'text/csv');
-        alert('CSV exported successfully!');
-    });
+    window.approveTask = function(id) {
+        createConfetti();
+        alert('Task approved!');
+        renderVerifyList();
+    };
 
-    document.getElementById('exportPDF')?.addEventListener('click', () => {
-        alert('PDF export would generate a detailed report.\n\nFor production, use libraries like jsPDF or pdfmake.');
-    });
-
-    document.getElementById('exportJSON')?.addEventListener('click', () => {
-        const data = {
-            export_date: new Date().toISOString(),
-            total_records: samplePlayers.length,
-            data: samplePlayers.map(p => ({
-                user_id: p.id,
-                score: p.score,
-                placement: p.placement,
-                percentile_rank: p.percentile,
-                timestamp: `${p.date}T00:00:00Z`
-            }))
-        };
-        const json = JSON.stringify(data, null, 2);
-        downloadFile(json, 'echohonors_data.json', 'application/json');
-        alert('JSON exported successfully!');
-    });
-
-    function downloadFile(content, filename, mimeType) {
-        const blob = new Blob([content], { type: mimeType });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-    }
+    window.rejectTask = function(id) {
+        alert('Task rejected.');
+        renderVerifyList();
+    };
 
     // Confetti Effect
     function createConfetti() {
@@ -519,4 +521,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         setTimeout(() => { overlay.innerHTML = ''; }, 4000);
     }
+
+    // Upload Button
+    document.getElementById('uploadBtn')?.addEventListener('click', () => {
+        alert('Upload feature would open file picker dialog.');
+    });
 });
