@@ -219,6 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initProgressRings();
         renderRanking();
         renderStudentsTable();
+        renderRecords();
         renderVerifyList();
     }
 
@@ -515,6 +516,102 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         }).join('');
     }
+
+    // Records Table (Admin) - Pass/Fail Verification
+    function renderRecords() {
+        const tbody = document.getElementById('recordsTableBody');
+        if (!tbody) return;
+
+        tbody.innerHTML = studentsData.map(student => {
+            const status = getStudentStatus(student.tasks);
+            
+            return `
+                <tr>
+                    <td>${student.id}</td>
+                    <td>${student.name}</td>
+                    <td>${student.tasks}</td>
+                    <td>${student.points}</td>
+                    <td>${student.awards}</td>
+                    <td><span class="status-badge ${status.class}">${status.label}</span></td>
+                    <td><button class="btn-details" onclick="viewStudentRecord('${student.id}')">Details</button></td>
+                </tr>
+            `;
+        }).join('');
+    }
+
+    function getStudentStatus(tasks) {
+        if (tasks >= 5) {
+            return { label: 'PASSED', class: 'passed' };
+        } else if (tasks >= 3) {
+            return { label: 'WARNING', class: 'warning' };
+        } else {
+            return { label: 'FAILED', class: 'failed' };
+        }
+    }
+
+    // View Student Record Details
+    window.viewStudentRecord = function(studentId) {
+        const student = studentsData.find(s => s.id === studentId);
+        if (!student) return;
+
+        const rank = studentsData.indexOf(student) + 1;
+        const status = getStudentStatus(student.tasks);
+        
+        document.getElementById('modalStudentName').textContent = student.name;
+        document.getElementById('modalStudentRank').textContent = `Rank #${rank} • ${status.label}`;
+        document.getElementById('modalTasks').textContent = student.tasks;
+        document.getElementById('modalPoints').textContent = student.points;
+        document.getElementById('modalAwards').textContent = student.awards;
+        document.getElementById('modalRate').textContent = `${Math.round((student.tasks / 18) * 100)}%`;
+
+        // Generate awards list with status
+        const awardsList = document.getElementById('modalAwardsList');
+        const possibleAwards = [
+            { name: 'ExperTO', required: 5 },
+            { name: 'SSLG', required: 4 },
+            { name: 'YES-O', required: 4 },
+            { name: 'BKB', required: 4 },
+            { name: 'Math Club', required: 4 },
+            { name: 'Literary Club', required: 4 },
+            { name: 'Art Club', required: 4 },
+            { name: 'Music Club', required: 4 }
+        ];
+        
+        awardsList.innerHTML = possibleAwards.map(award => {
+            const earned = student.awards >= possibleAwards.indexOf(award) + 1;
+            return `
+                <div class="record-award-item">
+                    <span class="award-title"><i class="fas fa-trophy"></i> ${award.name}</span>
+                    <span class="award-status ${earned ? 'complete' : 'incomplete'}">${earned ? 'Earned' : 'Not Earned'}</span>
+                </div>
+            `;
+        }).join('');
+
+        document.getElementById('studentModal').classList.add('active');
+    };
+
+    // Search Records
+    document.getElementById('searchRecord')?.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        const filtered = studentsData.filter(s => 
+            s.name.toLowerCase().includes(query) || s.id.toLowerCase().includes(query)
+        );
+        const tbody = document.getElementById('recordsTableBody');
+        tbody.innerHTML = filtered.map(student => {
+            const status = getStudentStatus(student.tasks);
+            return `
+                <tr>
+                    <td>${student.id}</td>
+                    <td>${student.name}</td>
+                    <td>${student.tasks}</td>
+                    <td>${student.points}</td>
+                    <td>${student.awards}</td>
+                    <td><span class="status-badge ${status.class}">${status.label}</span></td>
+                    <td><button class="btn-details" onclick="viewStudentRecord('${student.id}')">Details</button></td>
+                </tr>
+            `;
+        }).join('');
+    });
 
     // Search Students
     document.getElementById('searchStudent')?.addEventListener('input', (e) => {

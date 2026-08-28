@@ -680,6 +680,7 @@
                 <div class="admin-tabs">
                     <button class="admin-tab active" data-tab="overview"><i class="fas fa-chart-line"></i> Overview</button>
                     <button class="admin-tab" data-tab="students"><i class="fas fa-users"></i> Students</button>
+                    <button class="admin-tab" data-tab="records"><i class="fas fa-clipboard-check"></i> Records</button>
                     <button class="admin-tab" data-tab="verify"><i class="fas fa-check-double"></i> Verify</button>
                 </div>
 
@@ -725,6 +726,37 @@
                                 </tr>
                             </thead>
                             <tbody id="studentsTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="admin-panel" id="panel-records">
+                    <div class="panel-header">
+                        <h2><i class="fas fa-clipboard-check"></i> Student Records & Pass/Fail Status</h2>
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="searchRecord" placeholder="Search by name or ID...">
+                        </div>
+                    </div>
+                    <div class="records-legend">
+                        <span class="legend-item"><span class="legend-dot passed"></span> Passed (5+ tasks)</span>
+                        <span class="legend-item"><span class="legend-dot warning"></span> Warning (3-4 tasks)</span>
+                        <span class="legend-item"><span class="legend-dot failed"></span> Failed (0-2 tasks)</span>
+                    </div>
+                    <div class="records-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Student ID</th>
+                                    <th>Student Name</th>
+                                    <th>Tasks Completed</th>
+                                    <th>Total Points</th>
+                                    <th>Awards Earned</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recordsTableBody"></tbody>
                         </table>
                     </div>
                 </div>

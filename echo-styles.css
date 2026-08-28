@@ -1331,6 +1331,155 @@ body {
     border-color: var(--gold);
 }
 
+/* Records Panel Styles */
+.records-legend {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+.legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.legend-dot.passed {
+    background: var(--success);
+}
+
+.legend-dot.warning {
+    background: #f59e0b;
+}
+
+.legend-dot.failed {
+    background: var(--accent);
+}
+
+.records-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.records-table th {
+    padding: 15px;
+    text-align: left;
+    background: var(--navy);
+    color: var(--gold);
+    font-weight: 600;
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.records-table td {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.records-table tr:hover {
+    background: rgba(255, 215, 0, 0.05);
+}
+
+.status-badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-badge.passed {
+    background: rgba(16, 185, 129, 0.2);
+    color: var(--success);
+    border: 1px solid var(--success);
+}
+
+.status-badge.warning {
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+    border: 1px solid #f59e0b;
+}
+
+.status-badge.failed {
+    background: rgba(233, 69, 96, 0.2);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+.btn-details {
+    padding: 8px 16px;
+    background: rgba(255, 215, 0, 0.2);
+    border: 1px solid var(--gold);
+    border-radius: 6px;
+    color: var(--gold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+}
+
+.btn-details:hover {
+    background: var(--gold);
+    color: var(--navy-dark);
+}
+
+/* Student Detail Modal in Records */
+.record-detail-modal {
+    padding: 20px;
+}
+
+.record-detail-modal h3 {
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+
+.record-awards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.record-award-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border-left: 3px solid var(--gold);
+}
+
+.record-award-item .award-title {
+    font-weight: 600;
+    color: var(--white);
+}
+
+.record-award-item .award-status {
+    font-size: 0.85rem;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+.record-award-item .award-status.complete {
+    background: rgba(16, 185, 129, 0.2);
+    color: var(--success);
+}
+
+.record-award-item .award-status.incomplete {
+    background: rgba(233, 69, 96, 0.2);
+    color: var(--accent);
+}
+
 .filter-bar {
     display: flex;
     gap: 15px;
