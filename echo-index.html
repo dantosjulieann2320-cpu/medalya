@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EchoHonors - Digital Student Achievement & Portfolio Management</title>
+    <link rel="stylesheet" href="echo-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="logo-animation">
+                <div class="trophy-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="medal-ring"></div>
+            </div>
+            <h1 class="loading-title">EchoHonors</h1>
+            <p class="loading-subtitle">Digital Student Achievement & Portfolio Management</p>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+        <div class="confetti-container" id="loadingConfetti"></div>
+    </div>
+
+    <!-- Landing Page -->
+    <div class="landing-page" id="landingPage">
+        <div class="landing-background">
+            <div class="floating-trophies">
+                <i class="fas fa-trophy float-item"></i>
+                <i class="fas fa-medal float-item"></i>
+                <i class="fas fa-award float-item"></i>
+                <i class="fas fa-star float-item"></i>
+                <i class="fas fa-certificate float-item"></i>
+            </div>
+        </div>
+        
+        <div class="landing-content">
+            <div class="logo-main">
+                <div class="logo-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h1>EchoHonors</h1>
+            </div>
+            <p class="tagline">Recognizing Excellence, Building Portfolios</p>
+            <p class="description">Digital Student Achievement and Portfolio Management System</p>
+            
+            <div class="landing-buttons">
+                <button class="btn-primary" id="openAuthModal">
+                    <i class="fas fa-rocket"></i> Get Started
+                </button>
+            </div>
+        </div>
+
+        <div class="features-preview">
+            <div class="feature-card">
+                <i class="fas fa-trophy"></i>
+                <h3>Achievements</h3>
+                <p>Track your awards and accomplishments</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-folder-open"></i>
+                <h3>Portfolio</h3>
+                <p>Build your digital portfolio</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-certificate"></i>
+                <h3>Certificates</h3>
+                <p>Store and verify your certificates</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal-overlay" id="authModal">
+        <div class="auth-modal">
+            <button class="close-modal" id="closeAuthModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="auth-header">
+                <div class="auth-logo">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h2>Welcome to EchoHonors</h2>
+                <p>Sign in to continue your journey</p>
+            </div>
+
+            <!-- Login Form -->
+            <div class="auth-form" id="loginForm">
+                <h3>Log In</h3>
+                <div class="social-login">
+                    <button class="social-btn google" id="googleLogin">
+                        <i class="fab fa-google"></i>
+                        <span>Continue with Gmail</span>
+                    </button>
+                    <button class="social-btn facebook" id="facebookLogin">
+                        <i class="fab fa-facebook-f"></i>
+                        <span>Continue with Facebook</span>
+                    </button>
+                </div>
+                <div class="divider">
+                    <span>or</span>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="loginEmail" placeholder="Email address">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="loginPassword" placeholder="Password">
+                </div>
+                <button class="btn-submit" id="submitLogin">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <p class="auth-switch">
+                    Don't have an account? <a href="#" id="showSignup">Sign Up</a>
+                </p>
+            </div>
+
+            <!-- Signup Form -->
+            <div class="auth-form hidden" id="signupForm">
+                <h3>Create Account</h3>
+                <div class="social-login">
+                    <button class="social-btn google" id="googleSignup">
+                        <i class="fab fa-google"></i>
+                        <span>Sign up with Gmail</span>
+                    </button>
+                    <button class="social-btn facebook" id="facebookSignup">
+                        <i class="fab fa-facebook-f"></i>
+                        <span>Sign up with Facebook</span>
+                    </button>
+                </div>
+                <div class="divider">
+                    <span>or</span>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="signupName" placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                    <input type="email" id="signupEmail" placeholder="Email address">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="signupPassword" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="signupStudentId" placeholder="Student ID">
+                </div>
+                <button class="btn-submit" id="submitSignup">
+                    <span>Create Account</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <p class="auth-switch">
+                    Already have an account? <a href="#" id="showLogin">Log In</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard hidden" id="dashboard">
+        <nav class="dashboard-nav">
+            <div class="nav-brand">
+                <i class="fas fa-trophy"></i>
+                <span>EchoHonors</span>
+            </div>
+            <div class="nav-user">
+                <span id="userName">Student</span>
+                <button class="btn-logout" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </nav>
+
+        <div class="dashboard-content">
+            <div class="welcome-section">
+                <h1>Leadership Awards</h1>
+                <p>Select a club to view tasks and achievements</p>
+            </div>
+
+            <div class="awards-grid">
+                <div class="award-card" data-club="experto">
+                    <div class="award-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="award-badge">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>ExperTO Club</h3>
+                    <p>Leadership Award</p>
+                    <div class="progress-ring">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" class="progress-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="progress-fill" data-progress="0"></circle>
+                        </svg>
+                        <span class="progress-text">0%</span>
+                    </div>
+                </div>
+
+                <div class="award-card" data-club="sslg">
+                    <div class="award-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="award-badge">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>SSLG</h3>
+                    <p>Leadership Award</p>
+                    <div class="progress-ring">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" class="progress-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="progress-fill" data-progress="0"></circle>
+                        </svg>
+                        <span class="progress-text">0%</span>
+                    </div>
+                </div>
+
+                <div class="award-card" data-club="yeso">
+                    <div class="award-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="award-badge">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>YES-O</h3>
+                    <p>Leadership Award</p>
+                    <div class="progress-ring">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" class="progress-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="progress-fill" data-progress="0"></circle>
+                        </svg>
+                        <span class="progress-text">0%</span>
+                    </div>
+                </div>
+
+                <div class="award-card" data-club="bkb">
+                    <div class="award-icon">
+                        <i class="fas fa-heart-broken"></i>
+                    </div>
+                    <div class="award-badge">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>BKB</h3>
+                    <p>Barkada Kontra Bisyo</p>
+                    <div class="progress-ring">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" class="progress-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="progress-fill" data-progress="0"></circle>
+                        </svg>
+                        <span class="progress-text">0%</span>
+                    </div>
+                </div>
+
+                <div class="award-card" data-club="math">
+                    <div class="award-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="award-badge">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Math Club</h3>
+                    <p>Leadership Award</p>
+                    <div class="progress-ring">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" class="progress-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="progress-fill" data-progress="0"></circle>
+                        </svg>
+                        <span class="progress-text">0%</span>
+                    </div>
+                </div>
+
+                <div class="award-card" data-club="literary">
+                    <div class="award-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="award-badge">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Literary Club</h3>
+                    <p>Leadership Award</p>
+                    <div class="progress-ring">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" class="progress-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="progress-fill" data-progress="0"></circle>
+                        </svg>
+                        <span class="progress-text">0%</span>
+                    </div>
+                </div>
+
+                <div class="award-card" data-club="art">
+                    <div class="award-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="award-badge">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Art Club</h3>
+                    <p>Leadership Award</p>
+                    <div class="progress-ring">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" class="progress-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="progress-fill" data-progress="0"></circle>
+                        </svg>
+                        <span class="progress-text">0%</span>
+                    </div>
+                </div>
+
+                <div class="award-card" data-club="music">
+                    <div class="award-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="award-badge">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Music Club</h3>
+                    <p>Leadership Award</p>
+                    <div class="progress-ring">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" class="progress-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="progress-fill" data-progress="0"></circle>
+                        </svg>
+                        <span class="progress-text">0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Club Modals -->
+    <!-- ExperTO Club Modal -->
+    <div class="club-modal" id="modal-experto">
+        <div class="club-modal-content">
+            <div class="club-modal-header">
+                <div class="club-icon"><i class="fas fa-brain"></i></div>
+                <h2>ExperTO Club</h2>
+                <p>Leadership Award Tasks</p>
+                <button class="close-club-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="club-modal-body">
+                <div class="task-list">
+                    <div class="task-item" data-task="1">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Organize Expert Talk Series</h4>
+                            <p>Schedule and coordinate 3 expert talks for the semester</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="2">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Create Club Handbook</h4>
+                            <p>Develop comprehensive guide for new members</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="3">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Lead Weekly Meetings</h4>
+                            <p>Conduct and document weekly club meetings</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="4">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Coordinate with Faculty</h4>
+                            <p>Establish regular communication with club adviser</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="5">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Submit Achievement Report</h4>
+                            <p>Compile and submit semester achievement report</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SSLG Modal -->
+    <div class="club-modal" id="modal-sslg">
+        <div class="club-modal-content">
+            <div class="club-modal-header">
+                <div class="club-icon"><i class="fas fa-users"></i></div>
+                <h2>SSLG</h2>
+                <p>Leadership Award Tasks</p>
+                <button class="close-club-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="club-modal-body">
+                <div class="task-list">
+                    <div class="task-item" data-task="1">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Lead Student Assembly</h4>
+                            <p>Organize and lead quarterly student assemblies</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="2">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Develop Leadership Programs</h4>
+                            <p>Create training modules for student leaders</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="3">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Coordinate School Events</h4>
+                            <p>Lead planning for major school celebrations</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="4">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Represent Student Body</h4>
+                            <p>Attend meetings with school administration</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- YES-O Modal -->
+    <div class="club-modal" id="modal-yeso">
+        <div class="club-modal-content">
+            <div class="club-modal-header">
+                <div class="club-icon"><i class="fas fa-seedling"></i></div>
+                <h2>YES-O</h2>
+                <p>Leadership Award Tasks</p>
+                <button class="close-club-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="club-modal-body">
+                <div class="task-list">
+                    <div class="task-item" data-task="1">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Lead Environmental Campaign</h4>
+                            <p>Organize school-wide environmental awareness drive</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="2">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Implement Recycling Program</h4>
+                            <p>Set up recycling stations and monitoring system</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="3">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Tree Planting Activity</h4>
+                            <p>Coordinate quarterly tree planting events</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="4">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Green School Documentation</h4>
+                            <p>Document and report environmental initiatives</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BKB Modal -->
+    <div class="club-modal" id="modal-bkb">
+        <div class="club-modal-content">
+            <div class="club-modal-header">
+                <div class="club-icon"><i class="fas fa-heart-broken"></i></div>
+                <h2>BKB</h2>
+                <p>Barkada Kontra Bisyo Leadership Award</p>
+                <button class="close-club-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="club-modal-body">
+                <div class="task-list">
+                    <div class="task-item" data-task="1">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Lead Anti-Drug Campaign</h4>
+                            <p>Organize drug awareness seminars and activities</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="2">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Peer Counseling Sessions</h4>
+                            <p>Conduct regular peer counseling for at-risk students</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="3">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Community Outreach</h4>
+                            <p>Lead community-based anti-vise programs</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="4">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Submit Advocacy Report</h4>
+                            <p>Document and present club achievements</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Math Club Modal -->
+    <div class="club-modal" id="modal-math">
+        <div class="club-modal-content">
+            <div class="club-modal-header">
+                <div class="club-icon"><i class="fas fa-calculator"></i></div>
+                <h2>Math Club</h2>
+                <p>Leadership Award Tasks</p>
+                <button class="close-club-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="club-modal-body">
+                <div class="task-list">
+                    <div class="task-item" data-task="1">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Organize Math Olympiad</h4>
+                            <p>Lead the school's Math Olympiad preparation team</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="2">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Math Tutorial Program</h4>
+                            <p>Establish peer tutoring for struggling students</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="3">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Math Week Celebration</h4>
+                            <p>Plan and execute Math Week activities</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="4">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Math Challenge Documentation</h4>
+                            <p>Record competition results and achievements</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Literary Club Modal -->
+    <div class="club-modal" id="modal-literary">
+        <div class="club-modal-content">
+            <div class="club-modal-header">
+                <div class="club-icon"><i class="fas fa-book-open"></i></div>
+                <h2>Literary Club</h2>
+                <p>Leadership Award Tasks</p>
+                <button class="close-club-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="club-modal-body">
+                <div class="task-list">
+                    <div class="task-item" data-task="1">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Organize Poetry Slam</h4>
+                            <p>Lead monthly poetry reading events</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="2">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>School Publication</h4>
+                            <p>Manage and edit school literary publication</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="3">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Writing Workshop</h4>
+                            <p>Conduct creative writing workshops</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="4">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Literary Festival</h4>
+                            <p>Organize annual literary festival</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Art Club Modal -->
+    <div class="club-modal" id="modal-art">
+        <div class="club-modal-content">
+            <div class="club-modal-header">
+                <div class="club-icon"><i class="fas fa-palette"></i></div>
+                <h2>Art Club</h2>
+                <p>Leadership Award Tasks</p>
+                <button class="close-club-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="club-modal-body">
+                <div class="task-list">
+                    <div class="task-item" data-task="1">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Art Exhibition</h4>
+                            <p>Curate and organize student art exhibits</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="2">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Mural Project</h4>
+                            <p>Lead school mural design and painting</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="3">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Art Workshop</h4>
+                            <p>Conduct basic art techniques workshop</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="4">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Art Competition Entry</h4>
+                            <p>Prepare entries for inter-school competitions</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Music Club Modal -->
+    <div class="club-modal" id="modal-music">
+        <div class="club-modal-content">
+            <div class="club-modal-header">
+                <div class="club-icon"><i class="fas fa-music"></i></div>
+                <h2>Music Club</h2>
+                <p>Leadership Award Tasks</p>
+                <button class="close-club-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="club-modal-body">
+                <div class="task-list">
+                    <div class="task-item" data-task="1">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>School Choir Training</h4>
+                            <p>Lead choir practice and performances</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="2">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Music Concert</h4>
+                            <p>Organize semester music concert</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="3">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Band Formation</h4>
+                            <p>Help establish and train school band</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-item" data-task="4">
+                        <div class="task-check"><input type="checkbox"><span class="checkmark"></span></div>
+                        <div class="task-info">
+                            <h4>Music Festival Participation</h4>
+                            <p>Prepare and lead team for competitions</p>
+                        </div>
+                        <span class="task-status">Pending</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confetti Container -->
+    <div class="confetti-overlay" id="confettiOverlay"></div>
+
+    <script src="echo-script.js"></script>
+</body>
+</html>
