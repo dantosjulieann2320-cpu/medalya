@@ -137,6 +137,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const dashboard = document.getElementById('dashboard');
     const openAuthModal = document.getElementById('openAuthModal');
     const closeAuthModal = document.getElementById('closeAuthModal');
+    
+    // Current club key for adding tasks
+    let currentClubKey = null;
     const loginForm = document.getElementById('loginForm');
     const signupForm = document.getElementById('signupForm');
     const showSignup = document.getElementById('showSignup');
@@ -276,11 +279,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const club = clubsData[clubKey];
         if (!club) return;
 
+        // Store current club key for adding tasks
+        currentClubKey = clubKey;
+
         document.getElementById('clubModalTitle').textContent = club.name;
         document.getElementById('clubModalSubtitle').textContent = club.subtitle;
         document.querySelector('#clubModal .club-icon i').className = club.icon;
 
+        renderTasks(clubKey);
+
+        // Reset add task form
+        document.getElementById('addTaskForm').classList.add('hidden');
+        document.getElementById('addTaskBtn').style.display = 'block';
+
+        clubModal.classList.add('active');
+    }
+
+    function renderTasks(clubKey) {
+        const club = clubsData[clubKey];
         const taskList = document.getElementById('taskList');
+        
         taskList.innerHTML = club.tasks.map(task => `
             <div class="task-item ${task.completed ? 'completed' : ''}" data-task="${task.id}">
                 <div class="task-check">
@@ -291,7 +309,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h4>${task.title}</h4>
                     <p>${task.desc}</p>
                 </div>
+                ${task.due ? `<span class="task-due"><i class="fas fa-calendar"></i> ${task.due}</span>` : ''}
                 <span class="task-status">${task.completed ? 'Completed' : 'Pending'}</span>
+                <button class="btn-delete-task" data-id="${task.id}" title="Delete task"><i class="fas fa-trash"></i></button>
             </div>
         `).join('');
 
@@ -304,21 +324,38 @@ document.addEventListener('DOMContentLoaded', () => {
         taskList.querySelectorAll('.task-check input').forEach(checkbox => {
             checkbox.addEventListener('change', () => {
                 const taskItem = checkbox.closest('.task-item');
+                const taskId = parseInt(taskItem.dataset.task);
                 const status = taskItem.querySelector('.task-status');
+                const task = club.tasks.find(t => t.id === taskId);
+                
                 if (checkbox.checked) {
                     taskItem.classList.add('completed');
                     status.textContent = 'Completed';
+                    if (task) task.completed = true;
                     createConfetti();
                 } else {
                     taskItem.classList.remove('completed');
                     status.textContent = 'Pending';
+                    if (task) task.completed = false;
                 }
                 updateModalProgress(clubKey);
                 updateCardProgress(clubKey);
             });
         });
 
-        clubModal.classList.add('active');
+        // Add event listeners to delete buttons
+        taskList.querySelectorAll('.btn-delete-task').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const taskId = parseInt(btn.dataset.id);
+                if (confirm('Delete this task?')) {
+                    club.tasks = club.tasks.filter(t => t.id !== taskId);
+                    renderTasks(clubKey);
+                    updateModalProgress(clubKey);
+                    updateCardProgress(clubKey);
+                }
+            });
+        });
     }
 
     function updateModalProgress(clubKey) {
@@ -357,6 +394,60 @@ document.addEventListener('DOMContentLoaded', () => {
         createConfetti();
         alert('Progress saved successfully!');
     });
+
+    // Add Task Button
+    document.getElementById('addTaskBtn')?.addEventListener('click', () => {
+        document.getElementById('addTaskForm').classList.remove('hidden');
+        document.getElementById('addTaskBtn').style.display = 'none';
+        document.getElementById('newTaskTitle').focus();
+    });
+
+    // Cancel Add Task
+    document.getElementById('cancelAddTask')?.addEventListener('click', () => {
+        document.getElementById('addTaskForm').classList.add('hidden');
+        document.getElementById('addTaskBtn').style.display = 'block';
+        clearTaskForm();
+    });
+
+    // Submit Add Task
+    document.getElementById('submitAddTask')?.addEventListener('click', () => {
+        const title = document.getElementById('newTaskTitle').value.trim();
+        const desc = document.getElementById('newTaskDesc').value.trim();
+        const due = document.getElementById('newTaskDue').value;
+
+        if (!title) {
+            alert('Please enter a task title.');
+            return;
+        }
+
+        if (!currentClubKey) return;
+
+        const club = clubsData[currentClubKey];
+        const newId = club.tasks.length > 0 ? Math.max(...club.tasks.map(t => t.id)) + 1 : 1;
+        
+        club.tasks.push({
+            id: newId,
+            title: title,
+            desc: desc || 'No description provided',
+            completed: false,
+            due: due || null
+        });
+
+        renderTasks(currentClubKey);
+        updateModalProgress(currentClubKey);
+        updateCardProgress(currentClubKey);
+        
+        document.getElementById('addTaskForm').classList.add('hidden');
+        document.getElementById('addTaskBtn').style.display = 'block';
+        clearTaskForm();
+        createConfetti();
+    });
+
+    function clearTaskForm() {
+        document.getElementById('newTaskTitle').value = '';
+        document.getElementById('newTaskDesc').value = '';
+        document.getElementById('newTaskDue').value = '';
+    }
 
     // Export Tasks
     document.getElementById('exportTasks')?.addEventListener('click', () => {
