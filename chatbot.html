@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+</head>
+<body>
+    <!-- Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="admin-avatar">
+                    <i class="fas fa-user-shield"></i>
+                    <span class="online-dot"></span>
+                </div>
+                <div class="admin-details">
+                    <h4>System Administrator</h4>
+                    <span class="status">Online</span>
+                </div>
+            </div>
+            <button class="chat-minimize" id="chatMinimize">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
+
+        <div class="chat-body" id="chatBody">
+            <div class="chat-messages" id="chatMessages">
+                <div class="message admin">
+                    <div class="message-avatar">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hello! I'm the <strong>Lead System Administrator</strong> for the Academic Portfolio Portal.</p>
+                        <p>I'm here to help you resolve any issues with your portfolio submittal and site access permissions.</p>
+                        <p>How can I assist you today?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <button class="quick-btn" data-question="verify student id">
+                    <i class="fas fa-id-card"></i>
+                    Verify Student ID
+                </button>
+                <button class="quick-btn" data-question="portfolio display settings">
+                    <i class="fas fa-cog"></i>
+                    Display Settings
+                </button>
+                <button class="quick-btn" data-question="access permissions">
+                    <i class="fas fa-lock"></i>
+                    Access Permissions
+                </button>
+                <button class="quick-btn" data-question="submit portfolio">
+                    <i class="fas fa-upload"></i>
+                    Submit Portfolio
+                </button>
+            </div>
+        </div>
+
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="Type your message...">
+            <button class="send-btn" id="sendBtn">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Chat Toggle Button -->
+    <button class="chat-toggle" id="chatToggle">
+        <i class="fas fa-headset"></i>
+        <span class="notification-badge">1</span>
+    </button>
+</body>
+</html>
