@@ -681,6 +681,7 @@
                     <button class="admin-tab active" data-tab="overview"><i class="fas fa-chart-line"></i> Overview</button>
                     <button class="admin-tab" data-tab="students"><i class="fas fa-users"></i> Students</button>
                     <button class="admin-tab" data-tab="records"><i class="fas fa-clipboard-check"></i> Records</button>
+                    <button class="admin-tab" data-tab="submissions"><i class="fas fa-file-alt"></i> Submissions</button>
                     <button class="admin-tab" data-tab="verify"><i class="fas fa-check-double"></i> Verify</button>
                 </div>
 
@@ -758,6 +759,33 @@
                             </thead>
                             <tbody id="recordsTableBody"></tbody>
                         </table>
+                    </div>
+                </div>
+
+                <div class="admin-panel" id="panel-submissions">
+                    <div class="panel-header">
+                        <h2><i class="fas fa-file-alt"></i> Task Submissions & Answers</h2>
+                        <div class="filter-group">
+                            <select id="filterClub">
+                                <option value="all">All Clubs</option>
+                                <option value="experto">ExperTO</option>
+                                <option value="sslg">SSLG</option>
+                                <option value="yeso">YES-O</option>
+                                <option value="bkb">BKB</option>
+                                <option value="math">Math Club</option>
+                                <option value="literary">Literary Club</option>
+                                <option value="art">Art Club</option>
+                                <option value="music">Music Club</option>
+                            </select>
+                            <select id="filterStatus">
+                                <option value="all">All Status</option>
+                                <option value="completed">Completed</option>
+                                <option value="pending">Pending</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="submissions-list" id="submissionsList">
+                        <!-- Populated by JavaScript -->
                     </div>
                 </div>
 

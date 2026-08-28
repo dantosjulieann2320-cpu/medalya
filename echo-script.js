@@ -118,6 +118,243 @@ const verifyData = [
     { id: 3, student: 'Jose Reyes', task: 'Lead Environmental Campaign', club: 'YES-O', date: 'Aug 23, 2026' }
 ];
 
+const submissionsData = [
+    {
+        id: 1,
+        studentId: 'USR001',
+        studentName: 'Juan Dela Cruz',
+        club: 'experto',
+        clubName: 'ExperTO Club',
+        taskTitle: 'Organize Expert Talk Series',
+        taskDesc: 'Schedule and coordinate 3 expert talks for the semester',
+        answer: 'Successfully organized 3 expert talks: (1) Dr. Reyes on AI in Education - attended by 150 students, (2) Engr. Santos on Engineering Careers - attended by 120 students, (3) Prof. Garcia on Research Methods - attended by 100 students. All talks were documented with photos and sign-in sheets.',
+        evidence: ['Event Photos', 'Sign-in Sheets', 'Certificates', 'Report'],
+        status: 'completed',
+        submittedDate: 'Aug 25, 2026'
+    },
+    {
+        id: 2,
+        studentId: 'USR001',
+        studentName: 'Juan Dela Cruz',
+        club: 'experto',
+        clubName: 'ExperTO Club',
+        taskTitle: 'Create Club Handbook',
+        taskDesc: 'Develop comprehensive guide for new members',
+        answer: 'Created a 25-page handbook covering: Club History, Constitution, Member Rights & Responsibilities, Committee Structure, Annual Activities, Achievement Requirements, and Contact Information. Handbook was reviewed by the club adviser and approved.',
+        evidence: ['Handbook PDF', 'Adviser Approval'],
+        status: 'completed',
+        submittedDate: 'Aug 20, 2026'
+    },
+    {
+        id: 3,
+        studentId: 'USR002',
+        studentName: 'Maria Santos',
+        club: 'sslg',
+        clubName: 'SSLG',
+        taskTitle: 'Lead Student Assembly',
+        taskDesc: 'Organize and lead quarterly student assemblies',
+        answer: 'Led 2 quarterly assemblies: Q1 Assembly (Leadership Orientation) with 300 attendees, Q2 Assembly (Achievement Recognition) with 280 attendees. Prepared agendas, coordinated with speakers, and ensured smooth execution.',
+        evidence: ['Assembly Program', 'Photos', 'Attendance Sheet'],
+        status: 'completed',
+        submittedDate: 'Aug 24, 2026'
+    },
+    {
+        id: 4,
+        studentId: 'USR002',
+        studentName: 'Maria Santos',
+        club: 'sslg',
+        clubName: 'SSLG',
+        taskTitle: 'Develop Leadership Programs',
+        taskDesc: 'Create training modules for student leaders',
+        answer: 'Developed 4 training modules: (1) Effective Communication, (2) Time Management, (3) Team Building, (4) Problem Solving. Each module includes presentation, activity sheets, and assessment quiz.',
+        evidence: ['Module Presentations', 'Activity Sheets', 'Quiz Materials'],
+        status: 'completed',
+        submittedDate: 'Aug 18, 2026'
+    },
+    {
+        id: 5,
+        studentId: 'USR003',
+        studentName: 'Jose Reyes',
+        club: 'yeso',
+        clubName: 'YES-O',
+        taskTitle: 'Lead Environmental Campaign',
+        taskDesc: 'Organize school-wide environmental awareness drive',
+        answer: 'Organized "Green School Month" campaign with activities: (1) Waste Segregation Drive, (2) Energy Conservation Pledge, (3) Tree Planting in School Grounds, (4) Environmental Film Screening. Reached 400+ students.',
+        evidence: ['Campaign Materials', 'Photos', 'Pledge Cards', 'Report'],
+        status: 'completed',
+        submittedDate: 'Aug 23, 2026'
+    },
+    {
+        id: 6,
+        studentId: 'USR004',
+        studentName: 'Ana Garcia',
+        club: 'math',
+        clubName: 'Math Club',
+        taskTitle: 'Organize Math Olympiad',
+        taskDesc: 'Lead the school\'s Math Olympiad preparation team',
+        answer: 'Organized weekly training sessions for 20 students. Conducted 5 mock exams. School team placed 3rd in District Math Olympiad with 2 gold medals and 3 silver medals.',
+        evidence: ['Training Schedule', 'Mock Exams', 'Competition Certificates', 'Medals Photo'],
+        status: 'completed',
+        submittedDate: 'Aug 22, 2026'
+    },
+    {
+        id: 7,
+        studentId: 'USR005',
+        studentName: 'Pedro Mendoza',
+        club: 'bkb',
+        clubName: 'BKB',
+        taskTitle: 'Lead Anti-Drug Campaign',
+        taskDesc: 'Organize drug awareness seminars and activities',
+        answer: 'Conducted 3 seminars with resource speakers from PNP and DOH. Created informative posters and distributed flyers to 500 students. Organized essay writing contest on drug prevention.',
+        evidence: ['Seminar Materials', 'Posters', 'Flyers', 'Essay Contest Entries'],
+        status: 'completed',
+        submittedDate: 'Aug 21, 2026'
+    },
+    {
+        id: 8,
+        studentId: 'USR006',
+        studentName: 'Sofia Lim',
+        club: 'literary',
+        clubName: 'Literary Club',
+        taskTitle: 'Organize Poetry Slam',
+        taskDesc: 'Lead monthly poetry reading events',
+        answer: 'Organized 3 poetry slam events with 15-20 participants each. Themes: Identity, Dreams, and Social Issues. Events were documented with videos and photos. Best poems were featured in school publication.',
+        evidence: ['Event Videos', 'Photos', 'Poem Collections', 'Publication Feature'],
+        status: 'completed',
+        submittedDate: 'Aug 19, 2026'
+    },
+    {
+        id: 9,
+        studentId: 'USR007',
+        studentName: 'Miguel Torres',
+        club: 'art',
+        clubName: 'Art Club',
+        taskTitle: 'Art Exhibition',
+        taskDesc: 'Curate and organize student art exhibits',
+        answer: 'Curated "Expressions" art exhibition featuring 50+ artworks from 30 students. Organized opening ceremony with 100+ visitors. Media coverage in local newspaper.',
+        evidence: ['Exhibition Photos', 'Catalog', 'Newspaper Clipping', 'Visitor Log'],
+        status: 'completed',
+        submittedDate: 'Aug 17, 2026'
+    },
+    {
+        id: 10,
+        studentId: 'USR008',
+        studentName: 'Isabella Cruz',
+        club: 'music',
+        clubName: 'Music Club',
+        taskTitle: 'School Choir Training',
+        taskDesc: 'Lead choir practice and performances',
+        answer: 'Trained 25-member choir for 3 months. Performed at School Foundation Day and Christmas Concert. Choir received "Best Performance" award.',
+        evidence: ['Training Logs', 'Performance Videos', 'Award Certificate'],
+        status: 'completed',
+        submittedDate: 'Aug 16, 2026'
+    },
+    {
+        id: 11,
+        studentId: 'USR009',
+        studentName: 'Carlos Ramos',
+        club: 'experto',
+        clubName: 'ExperTO Club',
+        taskTitle: 'Lead Weekly Meetings',
+        taskDesc: 'Conduct and document weekly club meetings',
+        answer: 'Conducted 12 weekly meetings with prepared agendas and documented minutes. Topics covered: Club goals, upcoming events, member concerns, and achievement tracking.',
+        evidence: ['Meeting Minutes', 'Agendas', 'Attendance Records'],
+        status: 'completed',
+        submittedDate: 'Aug 15, 2026'
+    },
+    {
+        id: 12,
+        studentId: 'USR010',
+        studentName: 'Elena Aquino',
+        club: 'yeso',
+        clubName: 'YES-O',
+        taskTitle: 'Implement Recycling Program',
+        taskDesc: 'Set up recycling stations and monitoring system',
+        answer: 'Installed 10 recycling stations around campus. Created monitoring schedule with volunteer teams. Collected 200kg of recyclables in first month. Proceeds donated to charity.',
+        evidence: ['Station Photos', 'Monitoring Schedule', 'Collection Report', 'Donation Receipt'],
+        status: 'completed',
+        submittedDate: 'Aug 14, 2026'
+    },
+    {
+        id: 13,
+        studentId: 'USR011',
+        studentName: 'Ricardo Bautista',
+        club: 'math',
+        clubName: 'Math Club',
+        taskTitle: 'Math Tutorial Program',
+        taskDesc: 'Establish peer tutoring for struggling students',
+        answer: 'Established peer tutoring program with 10 tutors helping 30 students. Sessions held 3x weekly. Average grade improvement of 15% observed.',
+        evidence: ['Tutoring Schedule', 'Student Progress Reports', 'Grade Comparisons'],
+        status: 'completed',
+        submittedDate: 'Aug 13, 2026'
+    },
+    {
+        id: 14,
+        studentId: 'USR012',
+        studentName: 'Camille Tan',
+        club: 'sslg',
+        clubName: 'SSLG',
+        taskTitle: 'Coordinate School Events',
+        taskDesc: 'Lead planning for major school celebrations',
+        answer: 'Coordinated Buwan ng Wika celebration with 5 activities. Managed 20 volunteers. Budget was within allocation. Event received positive feedback from administration.',
+        evidence: ['Event Program', 'Budget Report', 'Photos', 'Feedback Summary'],
+        status: 'completed',
+        submittedDate: 'Aug 12, 2026'
+    },
+    {
+        id: 15,
+        studentId: 'USR013',
+        studentName: 'Daniel Villanueva',
+        club: 'bkb',
+        clubName: 'BKB',
+        taskTitle: 'Peer Counseling Sessions',
+        taskDesc: 'Conduct regular peer counseling for at-risk students',
+        answer: 'Conducted 8 counseling sessions with 5 identified at-risk students. Created safe space for sharing. Referred 2 students to school guidance counselor for further assistance.',
+        evidence: ['Session Logs', 'Progress Notes', 'Referral Forms'],
+        status: 'completed',
+        submittedDate: 'Aug 11, 2026'
+    },
+    {
+        id: 16,
+        studentId: 'USR014',
+        studentName: 'Grace Fernandez',
+        club: 'literary',
+        clubName: 'Literary Club',
+        taskTitle: 'School Publication',
+        taskDesc: 'Manage and edit school literary publication',
+        answer: 'Managed quarterly publication "The Muse" with 20 pages. Edited 15 submissions from students. Coordinated with designers for layout.',
+        evidence: ['Published Magazine', 'Editing Log', 'Submission Guidelines'],
+        status: 'completed',
+        submittedDate: 'Aug 10, 2026'
+    },
+    {
+        id: 17,
+        studentId: 'USR015',
+        studentName: 'Mark Gonzales',
+        club: 'art',
+        clubName: 'Art Club',
+        taskTitle: 'Mural Project',
+        taskDesc: 'Lead school mural design and painting',
+        answer: 'Led team of 8 students in designing and painting school mural depicting "Unity in Diversity". Project completed in 2 weeks.',
+        evidence: ['Design Sketch', 'Progress Photos', 'Final Mural Photo'],
+        status: 'pending',
+        submittedDate: 'Pending'
+    },
+    {
+        id: 18,
+        studentId: 'USR009',
+        studentName: 'Carlos Ramos',
+        club: 'music',
+        clubName: 'Music Club',
+        taskTitle: 'Music Concert',
+        taskDesc: 'Organize semester music concert',
+        answer: 'Organized "Harmony" concert with 15 performances from solo and group acts. Coordinated with 20 performers. Venue setup and ticketing managed.',
+        evidence: ['Concert Program', 'Performance List', 'Photos', 'Ticket Sales Report'],
+        status: 'pending',
+        submittedDate: 'Pending'
+    }
+];
+
 // ==================== HELPER FUNCTIONS ====================
 
 function getRankSuffix(rank) {
@@ -220,6 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderRanking();
         renderStudentsTable();
         renderRecords();
+        renderSubmissions();
         renderVerifyList();
     }
 
@@ -611,6 +849,76 @@ document.addEventListener('DOMContentLoaded', () => {
                 </tr>
             `;
         }).join('');
+    });
+
+    // Submissions Panel
+    function renderSubmissions(clubFilter = 'all', statusFilter = 'all') {
+        const list = document.getElementById('submissionsList');
+        if (!list) return;
+
+        let filtered = submissionsData;
+
+        if (clubFilter !== 'all') {
+            filtered = filtered.filter(s => s.club === clubFilter);
+        }
+
+        if (statusFilter !== 'all') {
+            filtered = filtered.filter(s => s.status === statusFilter);
+        }
+
+        if (filtered.length === 0) {
+            list.innerHTML = `
+                <div class="no-submissions">
+                    <i class="fas fa-inbox"></i>
+                    <h3>No submissions found</h3>
+                    <p>Try adjusting your filters</p>
+                </div>
+            `;
+            return;
+        }
+
+        list.innerHTML = filtered.map(sub => `
+            <div class="submission-card">
+                <div class="submission-header">
+                    <div class="submission-info">
+                        <h3>${sub.studentName}</h3>
+                        <div class="submission-meta">
+                            <span><i class="fas fa-id-badge"></i> ${sub.studentId}</span>
+                            <span><i class="fas fa-users"></i> ${sub.clubName}</span>
+                        </div>
+                    </div>
+                    <span class="submission-status ${sub.status}">${sub.status === 'completed' ? 'Completed' : 'Pending'}</span>
+                </div>
+                <div class="submission-task">
+                    <h4><i class="fas fa-tasks"></i> Task: ${sub.taskTitle}</h4>
+                    <p>${sub.taskDesc}</p>
+                </div>
+                <div class="submission-answer">
+                    <h4><i class="fas fa-check-circle"></i> Answer / Submission:</h4>
+                    <p>${sub.answer}</p>
+                    <div class="submission-evidence">
+                        ${sub.evidence.map(e => `<span class="evidence-tag"><i class="fas fa-paperclip"></i> ${e}</span>`).join('')}
+                    </div>
+                </div>
+                <div class="submission-date">
+                    <span><i class="fas fa-calendar-alt"></i> Submitted: ${sub.submittedDate}</span>
+                    <span><i class="fas fa-clock"></i> Club: ${sub.clubName}</span>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Filter Submissions
+    document.getElementById('filterClub')?.addEventListener('change', (e) => {
+        const clubFilter = e.target.value;
+        const statusFilter = document.getElementById('filterStatus').value;
+        renderSubmissions(clubFilter, statusFilter);
+    });
+
+    document.getElementById('filterStatus')?.addEventListener('change', (e) => {
+        const statusFilter = e.target.value;
+        const clubFilter = document.getElementById('filterClub').value;
+        renderSubmissions(clubFilter, statusFilter);
     });
 
     // Search Students
