@@ -997,6 +997,362 @@ document.addEventListener('DOMContentLoaded', () => {
         renderSubmissions(clubFilter, statusFilter);
     });
 
+    // ==================== PORTFOLIO FUNCTIONALITY ====================
+
+    // Portfolio Data
+    let portfolioFiles = [
+        { id: 1, name: 'Resume_2026.pdf', type: 'pdf', size: '2.4 MB', folder: 'experto', date: 'Aug 15, 2026', description: 'Updated resume for job applications' },
+        { id: 2, name: 'Certificate_AWS.png', type: 'image', size: '1.8 MB', folder: 'math', date: 'Jul 20, 2026', description: 'AWS Cloud Practitioner Certificate' },
+        { id: 3, name: 'Project_Source.zip', type: 'code', size: '15.2 MB', folder: 'art', date: 'Jun 10, 2026', description: 'Source code for capstone project' },
+        { id: 4, name: 'Presentation_Final.mp4', type: 'video', size: '45.6 MB', folder: 'literary', date: 'May 5, 2026', description: 'Final presentation recording' },
+        { id: 5, name: 'Expert_Talk_Photos.zip', type: 'image', size: '25.3 MB', folder: 'experto', date: 'Aug 25, 2026', description: 'Photos from expert talk series' },
+        { id: 6, name: 'Club_Handbook.pdf', type: 'pdf', size: '3.2 MB', folder: 'experto', date: 'Aug 20, 2026', description: 'ExperTO Club membership handbook' },
+        { id: 7, name: 'Assembly_Minutes.docx', type: 'doc', size: '1.5 MB', folder: 'sslg', date: 'Aug 24, 2026', description: 'Minutes from student assembly' },
+        { id: 8, name: 'Environmental_Report.pdf', type: 'pdf', size: '4.8 MB', folder: 'yeso', date: 'Aug 23, 2026', description: 'Environmental campaign summary' },
+        { id: 9, name: 'Anti_Drug_Seminar.pptx', type: 'doc', size: '8.5 MB', folder: 'bkb', date: 'Aug 21, 2026', description: 'Presentation for drug awareness seminar' },
+        { id: 10, name: 'Math_Olympiad_Results.xlsx', type: 'doc', size: '0.8 MB', folder: 'math', date: 'Aug 22, 2026', description: 'Competition results spreadsheet' },
+        { id: 11, name: 'Poetry_Collection.pdf', type: 'pdf', size: '2.1 MB', folder: 'literary', date: 'Aug 19, 2026', description: 'Collection of student poems' },
+        { id: 12, name: 'Art_Exhibition_Catalog.pdf', type: 'pdf', size: '12.4 MB', folder: 'art', date: 'Aug 17, 2026', description: 'Exhibition catalog with artworks' },
+        { id: 13, name: 'Choir_Performance.mp3', type: 'video', size: '8.7 MB', folder: 'music', date: 'Aug 16, 2026', description: 'Christmas concert recording' },
+        { id: 14, name: 'Recycling_Program.docx', type: 'doc', size: '1.2 MB', folder: 'yeso', date: 'Aug 14, 2026', description: 'Recycling program documentation' },
+        { id: 15, name: 'Counseling_Logs.pdf', type: 'pdf', size: '0.9 MB', folder: 'bkb', date: 'Aug 11, 2026', description: 'Peer counseling session logs' }
+    ];
+
+    let currentFolder = 'all';
+    let selectedFiles = [];
+    let currentPreviewFile = null;
+
+    // Initialize Portfolio
+    function initPortfolio() {
+        renderPortfolio();
+        updatePortfolioStats();
+        setupFolderListeners();
+        setupUploadListeners();
+        setupPreviewListeners();
+    }
+
+    // Render Portfolio Grid
+    function renderPortfolio() {
+        const grid = document.getElementById('portfolioGrid');
+        if (!grid) return;
+
+        let files = portfolioFiles;
+        if (currentFolder !== 'all') {
+            files = files.filter(f => f.folder === currentFolder);
+        }
+
+        if (files.length === 0) {
+            grid.innerHTML = `
+                <div class="empty-portfolio">
+                    <i class="fas fa-folder-open"></i>
+                    <h3>No files yet</h3>
+                    <p>Upload files to get started</p>
+                </div>
+            `;
+            return;
+        }
+
+        grid.innerHTML = files.map(file => `
+            <div class="portfolio-item" data-id="${file.id}">
+                <div class="item-preview">${getFileIcon(file.type)}</div>
+                <div class="item-info">
+                    <h4>${file.name}</h4>
+                    <p>${file.size} • ${file.date}</p>
+                </div>
+                <div class="item-actions">
+                    <button onclick="previewFile(${file.id})" title="Preview"><i class="fas fa-eye"></i></button>
+                    <button onclick="downloadFile(${file.id})" title="Download"><i class="fas fa-download"></i></button>
+                    <button onclick="deleteFile(${file.id})" title="Delete"><i class="fas fa-trash"></i></button>
+                </div>
+            </div>
+        `).join('');
+
+        updateFolderCounts();
+    }
+
+    // Get File Icon
+    function getFileIcon(type) {
+        const icons = {
+            pdf: '<i class="fas fa-file-pdf"></i>',
+            image: '<i class="fas fa-image"></i>',
+            video: '<i class="fas fa-video"></i>',
+            doc: '<i class="fas fa-file-word"></i>',
+            code: '<i class="fas fa-file-code"></i>',
+            audio: '<i class="fas fa-music"></i>'
+        };
+        return icons[type] || '<i class="fas fa-file"></i>';
+    }
+
+    // Update Portfolio Stats
+    function updatePortfolioStats() {
+        document.getElementById('totalFiles').textContent = portfolioFiles.length;
+        document.getElementById('totalImages').textContent = portfolioFiles.filter(f => f.type === 'image').length;
+        document.getElementById('totalDocs').textContent = portfolioFiles.filter(f => f.type === 'pdf' || f.type === 'doc').length;
+        document.getElementById('totalVideos').textContent = portfolioFiles.filter(f => f.type === 'video').length;
+        document.getElementById('allFilesCount').textContent = portfolioFiles.length + ' files';
+    }
+
+    // Update Folder Counts
+    function updateFolderCounts() {
+        document.querySelectorAll('.folder-item').forEach(folder => {
+            const folderName = folder.dataset.folder;
+            const count = folderName === 'all' 
+                ? portfolioFiles.length 
+                : portfolioFiles.filter(f => f.folder === folderName).length;
+            folder.querySelector('.folder-count').textContent = count + ' files';
+        });
+    }
+
+    // Setup Folder Listeners
+    function setupFolderListeners() {
+        document.querySelectorAll('.folder-item').forEach(folder => {
+            folder.addEventListener('click', () => {
+                document.querySelectorAll('.folder-item').forEach(f => f.classList.remove('active'));
+                folder.classList.add('active');
+                currentFolder = folder.dataset.folder;
+                renderPortfolio();
+            });
+        });
+    }
+
+    // Setup Upload Listeners
+    function setupUploadListeners() {
+        const uploadBtn = document.getElementById('uploadBtn');
+        const uploadModal = document.getElementById('uploadModal');
+        const closeUploadModal = document.getElementById('closeUploadModal');
+        const cancelUpload = document.getElementById('cancelUpload');
+        const confirmUpload = document.getElementById('confirmUpload');
+        const browseBtn = document.getElementById('browseBtn');
+        const fileInput = document.getElementById('fileInput');
+        const uploadZone = document.getElementById('uploadZone');
+
+        uploadBtn?.addEventListener('click', () => {
+            uploadModal.classList.add('active');
+            selectedFiles = [];
+            renderUploadList();
+        });
+
+        closeUploadModal?.addEventListener('click', () => {
+            uploadModal.classList.remove('active');
+        });
+
+        cancelUpload?.addEventListener('click', () => {
+            uploadModal.classList.remove('active');
+        });
+
+        browseBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            fileInput.click();
+        });
+
+        uploadZone?.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        uploadZone?.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadZone.classList.add('dragover');
+        });
+
+        uploadZone?.addEventListener('dragleave', () => {
+            uploadZone.classList.remove('dragover');
+        });
+
+        uploadZone?.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        fileInput?.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        confirmUpload?.addEventListener('click', () => {
+            uploadFiles();
+        });
+    }
+
+    // Handle Files
+    function handleFiles(files) {
+        Array.from(files).forEach(file => {
+            const fileType = getFileType(file.name);
+            selectedFiles.push({
+                name: file.name,
+                size: formatFileSize(file.size),
+                type: fileType,
+                file: file
+            });
+        });
+        renderUploadList();
+    }
+
+    // Get File Type
+    function getFileType(filename) {
+        const ext = filename.split('.').pop().toLowerCase();
+        if (['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(ext)) return 'image';
+        if (['mp4', 'avi', 'mov', 'wmv'].includes(ext)) return 'video';
+        if (['mp3', 'wav', 'ogg'].includes(ext)) return 'audio';
+        if (['pdf'].includes(ext)) return 'pdf';
+        if (['doc', 'docx', 'txt', 'rtf'].includes(ext)) return 'doc';
+        if (['zip', 'rar', '7z', 'js', 'py', 'html', 'css'].includes(ext)) return 'code';
+        return 'doc';
+    }
+
+    // Format File Size
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+    }
+
+    // Render Upload List
+    function renderUploadList() {
+        const list = document.getElementById('uploadList');
+        if (!list) return;
+
+        list.innerHTML = selectedFiles.map((file, index) => `
+            <div class="upload-item">
+                ${getFileIcon(file.type)}
+                <div class="upload-item-info">
+                    <h4>${file.name}</h4>
+                    <p>${file.size}</p>
+                </div>
+                <button class="btn-remove" onclick="removeUploadFile(${index})">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        `).join('');
+    }
+
+    // Remove Upload File
+    window.removeUploadFile = function(index) {
+        selectedFiles.splice(index, 1);
+        renderUploadList();
+    };
+
+    // Upload Files
+    function uploadFiles() {
+        const folder = document.getElementById('uploadFolder').value;
+        const description = document.getElementById('fileDescription').value;
+
+        selectedFiles.forEach(file => {
+            const newFile = {
+                id: portfolioFiles.length + 1,
+                name: file.name,
+                type: file.type,
+                size: file.size,
+                folder: folder,
+                date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+                description: description || 'No description'
+            };
+            portfolioFiles.push(newFile);
+        });
+
+        document.getElementById('uploadModal').classList.remove('active');
+        selectedFiles = [];
+        renderPortfolio();
+        updatePortfolioStats();
+        createConfetti();
+        alert(`${selectedFiles.length} file(s) uploaded successfully!`);
+    }
+
+    // Setup Preview Listeners
+    function setupPreviewListeners() {
+        const previewModal = document.getElementById('previewModal');
+        const closePreviewModal = document.getElementById('closePreviewModal');
+        const downloadFileBtn = document.getElementById('downloadFile');
+        const deleteFileBtn = document.getElementById('deleteFile');
+
+        closePreviewModal?.addEventListener('click', () => {
+            previewModal.classList.remove('active');
+        });
+
+        downloadFileBtn?.addEventListener('click', () => {
+            if (currentPreviewFile) {
+                downloadFile(currentPreviewFile.id);
+                previewModal.classList.remove('active');
+            }
+        });
+
+        deleteFileBtn?.addEventListener('click', () => {
+            if (currentPreviewFile) {
+                deleteFile(currentPreviewFile.id);
+                previewModal.classList.remove('active');
+            }
+        });
+
+        previewModal?.addEventListener('click', (e) => {
+            if (e.target === previewModal) {
+                previewModal.classList.remove('active');
+            }
+        });
+    }
+
+    // Preview File
+    window.previewFile = function(id) {
+        const file = portfolioFiles.find(f => f.id === id);
+        if (!file) return;
+
+        currentPreviewFile = file;
+
+        document.getElementById('previewFileName').textContent = file.name;
+        document.getElementById('previewName').textContent = file.name;
+        document.getElementById('previewSize').textContent = file.size;
+        document.getElementById('previewFolder').textContent = getFolderName(file.folder);
+        document.getElementById('previewDate').textContent = file.date;
+        document.getElementById('previewDesc').textContent = file.description || 'No description';
+
+        const previewContent = document.getElementById('previewContent');
+        
+        if (file.type === 'image') {
+            previewContent.innerHTML = `<div class="file-icon"><i class="fas fa-image"></i><p>Image Preview</p></div>`;
+        } else if (file.type === 'video') {
+            previewContent.innerHTML = `<div class="file-icon"><i class="fas fa-video"></i><p>Video Preview</p></div>`;
+        } else if (file.type === 'audio') {
+            previewContent.innerHTML = `<div class="file-icon"><i class="fas fa-music"></i><p>Audio Preview</p></div>`;
+        } else {
+            previewContent.innerHTML = `<div class="file-icon">${getFileIcon(file.type)}<p>${file.name}</p></div>`;
+        }
+
+        document.getElementById('previewModal').classList.add('active');
+    };
+
+    // Get Folder Name
+    function getFolderName(folder) {
+        const names = {
+            experto: 'ExperTO Club',
+            sslg: 'SSLG',
+            yeso: 'YES-O',
+            bkb: 'BKB',
+            math: 'Math Club',
+            literary: 'Literary Club',
+            art: 'Art Club',
+            music: 'Music Club'
+        };
+        return names[folder] || folder;
+    }
+
+    // Download File
+    window.downloadFile = function(id) {
+        const file = portfolioFiles.find(f => f.id === id);
+        if (!file) return;
+        alert(`Downloading ${file.name}...`);
+    };
+
+    // Delete File
+    window.deleteFile = function(id) {
+        if (!confirm('Are you sure you want to delete this file?')) return;
+        portfolioFiles = portfolioFiles.filter(f => f.id !== id);
+        renderPortfolio();
+        updatePortfolioStats();
+    };
+
+    // Initialize Portfolio on load
+    initPortfolio();
+
     // Search Students
     document.getElementById('searchStudent')?.addEventListener('input', (e) => {
         const query = e.target.value.toLowerCase();

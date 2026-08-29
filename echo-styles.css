@@ -2781,6 +2781,235 @@ body {
     color: var(--white);
 }
 
+/* Portfolio Folders */
+.portfolio-folders {
+    margin-bottom: 30px;
+}
+
+.portfolio-folders h3 {
+    color: var(--gold);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.folder-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.folder-item {
+    background: var(--navy);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.folder-item:hover {
+    border-color: var(--gold);
+    background: rgba(255, 215, 0, 0.05);
+}
+
+.folder-item.active {
+    border-color: var(--gold);
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.folder-icon {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 8px;
+}
+
+.folder-item span {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--white);
+}
+
+.folder-count {
+    font-size: 0.75rem !important;
+    color: var(--gray) !important;
+    margin-top: 4px;
+}
+
+/* Upload Modal */
+.upload-modal {
+    max-width: 600px;
+}
+
+.upload-zone {
+    border: 2px dashed rgba(255, 215, 0, 0.3);
+    border-radius: 12px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.upload-zone:hover,
+.upload-zone.dragover {
+    border-color: var(--gold);
+    background: rgba(255, 215, 0, 0.05);
+}
+
+.upload-zone i {
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+
+.upload-zone h3 {
+    color: var(--white);
+    margin-bottom: 5px;
+}
+
+.upload-zone p {
+    color: var(--gray);
+    margin-bottom: 15px;
+}
+
+.upload-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.upload-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.upload-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.upload-item i {
+    font-size: 1.5rem;
+    color: var(--gold);
+}
+
+.upload-item-info {
+    flex: 1;
+}
+
+.upload-item-info h4 {
+    font-size: 0.9rem;
+    color: var(--white);
+}
+
+.upload-item-info p {
+    font-size: 0.8rem;
+    color: var(--gray);
+}
+
+.upload-item .btn-remove {
+    background: none;
+    border: none;
+    color: var(--accent);
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* Preview Modal */
+.preview-modal {
+    max-width: 700px;
+}
+
+.preview-content {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.preview-content img {
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+}
+
+.preview-content video,
+.preview-content audio {
+    width: 100%;
+}
+
+.preview-content .file-icon {
+    text-align: center;
+    padding: 40px;
+}
+
+.preview-content .file-icon i {
+    font-size: 4rem;
+    color: var(--gold);
+    opacity: 0.5;
+}
+
+.preview-content .file-icon p {
+    color: var(--gray);
+    margin-top: 10px;
+}
+
+.preview-info {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-row span:first-child {
+    color: var(--gray);
+}
+
+.info-row span:last-child {
+    color: var(--white);
+    font-weight: 500;
+}
+
+/* Empty State */
+.empty-portfolio {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--gray);
+}
+
+.empty-portfolio i {
+    font-size: 4rem;
+    color: rgba(255, 215, 0, 0.3);
+    margin-bottom: 15px;
+}
+
+.empty-portfolio h3 {
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
 /* Students Table */
 .students-table {
     background: var(--navy);

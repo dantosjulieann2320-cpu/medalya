@@ -594,82 +594,173 @@
                     <div class="portfolio-stat">
                         <i class="fas fa-file"></i>
                         <div>
-                            <h3>24</h3>
+                            <h3 id="totalFiles">0</h3>
                             <p>Total Files</p>
                         </div>
                     </div>
                     <div class="portfolio-stat">
                         <i class="fas fa-image"></i>
                         <div>
-                            <h3>8</h3>
+                            <h3 id="totalImages">0</h3>
                             <p>Images</p>
                         </div>
                     </div>
                     <div class="portfolio-stat">
                         <i class="fas fa-file-pdf"></i>
                         <div>
-                            <h3>12</h3>
+                            <h3 id="totalDocs">0</h3>
                             <p>Documents</p>
                         </div>
                     </div>
                     <div class="portfolio-stat">
                         <i class="fas fa-video"></i>
                         <div>
-                            <h3>4</h3>
+                            <h3 id="totalVideos">0</h3>
                             <p>Videos</p>
                         </div>
                     </div>
                 </div>
 
+                <!-- Folder Structure -->
+                <div class="portfolio-folders">
+                    <h3><i class="fas fa-folder"></i> Folders</h3>
+                    <div class="folder-grid">
+                        <div class="folder-item" data-folder="experto">
+                            <div class="folder-icon"><i class="fas fa-folder"></i></div>
+                            <span>ExperTO Club</span>
+                            <span class="folder-count">0 files</span>
+                        </div>
+                        <div class="folder-item" data-folder="sslg">
+                            <div class="folder-icon"><i class="fas fa-folder"></i></div>
+                            <span>SSLG</span>
+                            <span class="folder-count">0 files</span>
+                        </div>
+                        <div class="folder-item" data-folder="yeso">
+                            <div class="folder-icon"><i class="fas fa-folder"></i></div>
+                            <span>YES-O</span>
+                            <span class="folder-count">0 files</span>
+                        </div>
+                        <div class="folder-item" data-folder="bkb">
+                            <div class="folder-icon"><i class="fas fa-folder"></i></div>
+                            <span>BKB</span>
+                            <span class="folder-count">0 files</span>
+                        </div>
+                        <div class="folder-item" data-folder="math">
+                            <div class="folder-icon"><i class="fas fa-folder"></i></div>
+                            <span>Math Club</span>
+                            <span class="folder-count">0 files</span>
+                        </div>
+                        <div class="folder-item" data-folder="literary">
+                            <div class="folder-icon"><i class="fas fa-folder"></i></div>
+                            <span>Literary Club</span>
+                            <span class="folder-count">0 files</span>
+                        </div>
+                        <div class="folder-item" data-folder="art">
+                            <div class="folder-icon"><i class="fas fa-folder"></i></div>
+                            <span>Art Club</span>
+                            <span class="folder-count">0 files</span>
+                        </div>
+                        <div class="folder-item" data-folder="music">
+                            <div class="folder-icon"><i class="fas fa-folder"></i></div>
+                            <span>Music Club</span>
+                            <span class="folder-count">0 files</span>
+                        </div>
+                        <div class="folder-item active" data-folder="all">
+                            <div class="folder-icon"><i class="fas fa-folder-open"></i></div>
+                            <span>All Files</span>
+                            <span class="folder-count" id="allFilesCount">0 files</span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="portfolio-grid" id="portfolioGrid">
-                    <div class="portfolio-item">
-                        <div class="item-preview"><i class="fas fa-file-pdf"></i></div>
-                        <div class="item-info">
-                            <h4>Resume_2026.pdf</h4>
-                            <p>2.4 MB • Aug 15, 2026</p>
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Upload Modal -->
+        <div class="modal-overlay" id="uploadModal">
+            <div class="modal-content upload-modal">
+                <div class="modal-header">
+                    <h2><i class="fas fa-cloud-upload-alt"></i> Upload File</h2>
+                    <button class="close-modal" id="closeUploadModal"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <div class="upload-zone" id="uploadZone">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Drag & Drop files here</h3>
+                        <p>or click to browse</p>
+                        <input type="file" id="fileInput" multiple hidden>
+                        <button class="btn-primary" id="browseBtn"><i class="fas fa-folder-open"></i> Browse Files</button>
+                    </div>
+                    <div class="upload-options">
+                        <div class="form-group">
+                            <label>Save to Folder</label>
+                            <select id="uploadFolder">
+                                <option value="experto">ExperTO Club</option>
+                                <option value="sslg">SSLG</option>
+                                <option value="yeso">YES-O</option>
+                                <option value="bkb">BKB</option>
+                                <option value="math">Math Club</option>
+                                <option value="literary">Literary Club</option>
+                                <option value="art">Art Club</option>
+                                <option value="music">Music Club</option>
+                            </select>
                         </div>
-                        <div class="item-actions">
-                            <button><i class="fas fa-eye"></i></button>
-                            <button><i class="fas fa-download"></i></button>
-                            <button><i class="fas fa-trash"></i></button>
+                        <div class="form-group">
+                            <label>Description (Optional)</label>
+                            <input type="text" id="fileDescription" placeholder="Add description...">
                         </div>
                     </div>
-                    <div class="portfolio-item">
-                        <div class="item-preview"><i class="fas fa-image"></i></div>
-                        <div class="item-info">
-                            <h4>Certificate_AWS.png</h4>
-                            <p>1.8 MB • Jul 20, 2026</p>
+                    <div class="upload-list" id="uploadList">
+                        <!-- Files to upload -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-cancel" id="cancelUpload">Cancel</button>
+                    <button class="btn-primary" id="confirmUpload"><i class="fas fa-upload"></i> Upload Files</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- File Preview Modal -->
+        <div class="modal-overlay" id="previewModal">
+            <div class="modal-content preview-modal">
+                <div class="modal-header">
+                    <h2 id="previewFileName">File Preview</h2>
+                    <button class="close-modal" id="closePreviewModal"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <div class="preview-content" id="previewContent">
+                        <!-- Preview content -->
+                    </div>
+                    <div class="preview-info">
+                        <div class="info-row">
+                            <span><i class="fas fa-file"></i> File Name:</span>
+                            <span id="previewName">-</span>
                         </div>
-                        <div class="item-actions">
-                            <button><i class="fas fa-eye"></i></button>
-                            <button><i class="fas fa-download"></i></button>
-                            <button><i class="fas fa-trash"></i></button>
+                        <div class="info-row">
+                            <span><i class="fas fa-weight-hanging"></i> Size:</span>
+                            <span id="previewSize">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span><i class="fas fa-folder"></i> Folder:</span>
+                            <span id="previewFolder">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span><i class="fas fa-calendar"></i> Uploaded:</span>
+                            <span id="previewDate">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span><i class="fas fa-align-left"></i> Description:</span>
+                            <span id="previewDesc">-</span>
                         </div>
                     </div>
-                    <div class="portfolio-item">
-                        <div class="item-preview"><i class="fas fa-file-code"></i></div>
-                        <div class="item-info">
-                            <h4>Project_Source.zip</h4>
-                            <p>15.2 MB • Jun 10, 2026</p>
-                        </div>
-                        <div class="item-actions">
-                            <button><i class="fas fa-eye"></i></button>
-                            <button><i class="fas fa-download"></i></button>
-                            <button><i class="fas fa-trash"></i></button>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="item-preview"><i class="fas fa-video"></i></div>
-                        <div class="item-info">
-                            <h4>Presentation_Final.mp4</h4>
-                            <p>45.6 MB • May 5, 2026</p>
-                        </div>
-                        <div class="item-actions">
-                            <button><i class="fas fa-eye"></i></button>
-                            <button><i class="fas fa-download"></i></button>
-                            <button><i class="fas fa-trash"></i></button>
-                        </div>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-primary" id="downloadFile"><i class="fas fa-download"></i> Download</button>
+                    <button class="btn-cancel" id="deleteFile"><i class="fas fa-trash"></i> Delete</button>
                 </div>
             </div>
         </div>
