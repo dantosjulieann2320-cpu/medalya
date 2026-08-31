@@ -1682,6 +1682,245 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => { overlay.innerHTML = ''; }, 4000);
     }
 
+    // ==================== AI CHATBOT ====================
+
+    // Chatbot Elements
+    const chatbotOpen = document.getElementById('chatbotOpen');
+    const chatbotBody = document.getElementById('chatbotBody');
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatMessages = document.getElementById('chatMessages');
+    const chatInput = document.getElementById('chatInput');
+    const unreadBadge = document.getElementById('unreadBadge');
+
+    let isChatOpen = false;
+
+    // Toggle Chat
+    chatbotOpen?.addEventListener('click', () => {
+        isChatOpen = !isChatOpen;
+        chatbotBody.classList.toggle('active', isChatOpen);
+        if (isChatOpen) {
+            unreadBadge.style.display = 'none';
+            chatInput.focus();
+        }
+    });
+
+    chatbotToggle?.addEventListener('click', () => {
+        isChatOpen = false;
+        chatbotBody.classList.remove('active');
+    });
+
+    // AI Responses Database
+    const aiResponses = {
+        'complete a task': `📋 <strong>How to Complete a Task:</strong><br><br>
+1. Go to <strong>Awards</strong> tab<br>
+2. Click on any club card (ExperTO, SSLG, etc.)<br>
+3. You'll see the list of tasks<br>
+4. Click the <strong>checkbox</strong> next to a task to mark it as completed<br>
+5. A confetti will burst when you complete a task!<br><br>
+💡 <em>Tip: Complete ALL tasks to earn your certificate!</em>`,
+
+        'upload evidence': `📎 <strong>How to Upload Evidence:</strong><br><br>
+1. Open any club card in <strong>Awards</strong> tab<br>
+2. Hover over a task<br>
+3. Click the <strong>paperclip icon</strong> 📎<br>
+4. Select your file (Image, PDF, DOC)<br>
+5. The file will appear under the task<br><br>
+💡 <em>Evidence helps prove you completed the task!</em>`,
+
+        'certificate': `🏆 <strong>How to Get Your Certificate:</strong><br><br>
+1. Go to <strong>Awards</strong> tab<br>
+2. Click on a club card<br>
+3. Complete <strong>ALL tasks</strong> in that club<br>
+4. A "View Your Certificate" button will appear<br>
+5. Click it to see your certificate!<br><br>
+🎉 <em>You'll get a confetti celebration when you view it!</em>`,
+
+        'portfolio': `📁 <strong>Portfolio Guide:</strong><br><br>
+1. Click the <strong>Portfolio</strong> tab<br>
+2. You'll see folders for each club<br>
+3. Click a folder to filter files<br>
+4. Click <strong>"Upload File"</strong> to add files<br>
+5. Drag & drop or browse files<br>
+6. Select which folder to save to<br><br>
+💡 <em>You can preview, download, or delete files!</em>`,
+
+        'awards': `⭐ <strong>Available Awards:</strong><br><br>
+• <strong>ExperTO Club</strong> - Brain & Intellect<br>
+• <strong>SSLG</strong> - Student Leadership<br>
+• <strong>YES-O</strong> - Youth for Environment<br>
+• <strong>BKB</strong> - Anti-Drug Advocacy<br>
+• <strong>Math Club</strong> - Mathematics Excellence<br>
+• <strong>Literary Club</strong> - Writing & Literature<br>
+• <strong>Art Club</strong> - Visual Arts<br>
+• <strong>Music Club</strong> - Musical Arts<br><br>
+💡 <em>Complete tasks in each to earn awards!</em>`,
+
+        'ranking': `📊 <strong>How to Check Ranking:</strong><br><br>
+1. Click the <strong>Ranking</strong> tab<br>
+2. See your position among students<br>
+3. Your stats are shown at the top:<br>
+   - Rank<br>
+   - Tasks Completed<br>
+   - Points<br>
+   - Awards Earned<br><br>
+💡 <em>Complete more tasks to climb the rankings!</em>`,
+
+        'hello': `👋 Hello! Welcome to <strong>EchoHonors</strong>!<br><br>
+I'm here to help you navigate the website. You can ask me about:<br>
+• Completing tasks<br>
+• Uploading evidence<br>
+• Getting certificates<br>
+• Using portfolio<br>
+• Checking rankings<br><br>
+What would you like to know?`,
+
+        'help': `❓ <strong>How Can I Help?</strong><br><br>
+Here are some things I can help you with:<br><br>
+📋 <strong>Tasks</strong> - How to complete tasks<br>
+📎 <strong>Evidence</strong> - How to upload proof<br>
+🏆 <strong>Certificate</strong> - How to earn certificates<br>
+📁 <strong>Portfolio</strong> - Managing your files<br>
+⭐ <strong>Awards</strong> - Available awards<br>
+📊 <strong>Ranking</strong> - Student rankings<br><br>
+Just type your question or click a quick action button!`,
+
+        'thank': `😊 You're welcome! If you have any more questions, just ask. Good luck with your awards!`,
+
+        'good': `😊 Thank you! I'm glad I could help. Is there anything else you'd like to know?`
+    };
+
+    // Send Message
+    window.sendMessage = function() {
+        const message = chatInput.value.trim();
+        if (!message) return;
+
+        // Add user message
+        addMessage(message, 'user');
+        chatInput.value = '';
+
+        // Show typing indicator
+        showTyping();
+
+        // Get AI response after delay
+        setTimeout(() => {
+            removeTyping();
+            const response = getAIResponse(message);
+            addMessage(response, 'bot');
+        }, 1000 + Math.random() * 1000);
+    };
+
+    // Quick Message
+    window.sendQuickMessage = function(message) {
+        addMessage(message, 'user');
+        showTyping();
+        setTimeout(() => {
+            removeTyping();
+            const response = getAIResponse(message);
+            addMessage(response, 'bot');
+        }, 800);
+    };
+
+    // Handle Enter Key
+    window.handleChatKeyPress = function(event) {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    };
+
+    // Add Message to Chat
+    function addMessage(content, type) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = type === 'bot' ? 'bot-message' : 'user-message';
+        
+        if (type === 'bot') {
+            messageDiv.innerHTML = `
+                <div class="bot-avatar"><i class="fas fa-robot"></i></div>
+                <div class="message-content"><p>${content}</p></div>
+            `;
+        } else {
+            messageDiv.innerHTML = `
+                <div class="message-content"><p>${content}</p></div>
+            `;
+        }
+        
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Show Typing Indicator
+    function showTyping() {
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'bot-message typing';
+        typingDiv.id = 'typingIndicator';
+        typingDiv.innerHTML = `
+            <div class="bot-avatar"><i class="fas fa-robot"></i></div>
+            <div class="message-content">
+                <div class="typing-indicator">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        `;
+        chatMessages.appendChild(typingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Remove Typing Indicator
+    function removeTyping() {
+        const typing = document.getElementById('typingIndicator');
+        if (typing) typing.remove();
+    }
+
+    // Get AI Response
+    function getAIResponse(message) {
+        const lowerMessage = message.toLowerCase();
+        
+        // Check for matching keywords
+        for (const [keyword, response] of Object.entries(aiResponses)) {
+            if (lowerMessage.includes(keyword)) {
+                return response;
+            }
+        }
+
+        // Check for additional keywords
+        if (lowerMessage.includes('task') || lowerMessage.includes('gawin')) {
+            return aiResponses['complete a task'];
+        }
+        if (lowerMessage.includes('upload') || lowerMessage.includes('evidence') || lowerMessage.includes('file') || lowerMessage.includes('picture')) {
+            return aiResponses['upload evidence'];
+        }
+        if (lowerMessage.includes('cert') || lowerMessage.includes('award') || lowerMessage.includes('trophy')) {
+            return aiResponses['certificate'];
+        }
+        if (lowerMessage.includes('portfolio') || lowerMessage.includes('folder')) {
+            return aiResponses['portfolio'];
+        }
+        if (lowerMessage.includes('rank') || lowerMessage.includes('standing') || lowerMessage.includes('position')) {
+            return aiResponses['ranking'];
+        }
+        if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey') || lowerMessage.includes('kumusta')) {
+            return aiResponses['hello'];
+        }
+        if (lowerMessage.includes('help') || lowerMessage.includes('tulong')) {
+            return aiResponses['help'];
+        }
+        if (lowerMessage.includes('thank') || lowerMessage.includes('salamat')) {
+            return aiResponses['thank'];
+        }
+        if (lowerMessage.includes('good') || lowerMessage.includes('nice') || lowerMessage.includes('great')) {
+            return aiResponses['good'];
+        }
+
+        // Default response
+        return `I'm not sure I understand that. Here are some things I can help with:<br><br>
+• How to complete a task<br>
+• How to upload evidence<br>
+• How to get certificates<br>
+• Portfolio guide<br>
+• View awards<br>
+• Check ranking<br><br>
+Try asking about one of these topics! 😊`;
+    }
+
     // Upload Button
     document.getElementById('uploadBtn')?.addEventListener('click', () => {
         alert('Upload feature would open file picker dialog.');

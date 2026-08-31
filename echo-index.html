@@ -1052,6 +1052,47 @@
         </div>
     </div>
 
+    <!-- AI Chatbot -->
+    <div class="chatbot-container" id="chatbot">
+        <div class="chatbot-header">
+            <div class="chatbot-avatar">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="chatbot-info">
+                <h4>EchoAssistant</h4>
+                <span class="status-online"><span class="online-dot"></span> Online</span>
+            </div>
+            <button class="chatbot-toggle" id="chatbotToggle"><i class="fas fa-chevron-down"></i></button>
+        </div>
+        <div class="chatbot-body" id="chatbotBody">
+            <div class="chat-messages" id="chatMessages">
+                <div class="bot-message">
+                    <div class="bot-avatar"><i class="fas fa-robot"></i></div>
+                    <div class="message-content">
+                        <p>Hello! I'm <strong>EchoAssistant</strong>, your AI guide for EchoHonors!</p>
+                        <p>How can I help you today?</p>
+                    </div>
+                </div>
+                <div class="quick-actions">
+                    <button class="quick-btn" onclick="sendQuickMessage('How do I complete a task?')">📋 Complete a Task</button>
+                    <button class="quick-btn" onclick="sendQuickMessage('How to upload evidence?')">📎 Upload Evidence</button>
+                    <button class="quick-btn" onclick="sendQuickMessage('How to get my certificate?')">🏆 Get Certificate</button>
+                    <button class="quick-btn" onclick="sendQuickMessage('How to use portfolio?')">📁 Portfolio Guide</button>
+                    <button class="quick-btn" onclick="sendQuickMessage('What are the awards?')">⭐ View Awards</button>
+                    <button class="quick-btn" onclick="sendQuickMessage('How to check ranking?')">📊 Check Ranking</button>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="Ask me anything..." onkeypress="handleChatKeyPress(event)">
+                <button class="send-btn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <button class="chatbot-open" id="chatbotOpen">
+            <i class="fas fa-comments"></i>
+            <span class="unread-badge" id="unreadBadge">1</span>
+        </button>
+    </div>
+
     <div class="confetti-overlay" id="confettiOverlay"></div>
 
     <script src="echo-script.js"></script>
