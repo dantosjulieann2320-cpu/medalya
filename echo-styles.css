@@ -3341,26 +3341,6 @@ body {
 }
 
 /* Certificate Transition */
-.modal-overlay {
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.4s ease;
-}
-
-.modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-content {
-    transform: scale(0.8) translateY(30px);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.modal-overlay.active .modal-content {
-    transform: scale(1) translateY(0);
-}
-
 .certificate-container {
     transform: scale(0.7) rotateY(-15deg);
     transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -3689,6 +3669,59 @@ body {
 .btn-delete-task:hover {
     background: var(--accent);
     color: var(--white);
+}
+
+/* Upload Evidence Button */
+.btn-upload-evidence {
+    position: absolute;
+    right: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(16, 185, 129, 0.2);
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    color: var(--success);
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task-item:hover .btn-upload-evidence {
+    opacity: 1;
+}
+
+.btn-upload-evidence:hover {
+    background: var(--success);
+    color: var(--white);
+}
+
+/* Task Evidence List */
+.task-evidence-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.evidence-file {
+    padding: 4px 10px;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 12px;
+    font-size: 0.75rem;
+    color: var(--success);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.evidence-file i {
+    font-size: 0.7rem;
 }
 
 .task-due {

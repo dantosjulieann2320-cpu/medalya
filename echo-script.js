@@ -8,11 +8,11 @@ const clubsData = {
         icon: 'fas fa-brain',
         subtitle: 'Leadership Award Tasks',
         tasks: [
-            { id: 1, title: 'Organize Expert Talk Series', desc: 'Schedule and coordinate 3 expert talks for the semester', completed: false },
-            { id: 2, title: 'Create Club Handbook', desc: 'Develop comprehensive guide for new members', completed: false },
-            { id: 3, title: 'Lead Weekly Meetings', desc: 'Conduct and document weekly club meetings', completed: false },
-            { id: 4, title: 'Coordinate with Faculty', desc: 'Establish regular communication with club adviser', completed: false },
-            { id: 5, title: 'Submit Achievement Report', desc: 'Compile and submit semester achievement report', completed: false }
+            { id: 1, title: 'Organize Expert Talk Series', desc: 'Schedule and coordinate 3 expert talks for the semester', completed: false, evidence: [] },
+            { id: 2, title: 'Create Club Handbook', desc: 'Develop comprehensive guide for new members', completed: false, evidence: [] },
+            { id: 3, title: 'Lead Weekly Meetings', desc: 'Conduct and document weekly club meetings', completed: false, evidence: [] },
+            { id: 4, title: 'Coordinate with Faculty', desc: 'Establish regular communication with club adviser', completed: false, evidence: [] },
+            { id: 5, title: 'Submit Achievement Report', desc: 'Compile and submit semester achievement report', completed: false, evidence: [] }
         ]
     },
     sslg: {
@@ -20,10 +20,10 @@ const clubsData = {
         icon: 'fas fa-users',
         subtitle: 'Leadership Award Tasks',
         tasks: [
-            { id: 1, title: 'Lead Student Assembly', desc: 'Organize and lead quarterly student assemblies', completed: false },
-            { id: 2, title: 'Develop Leadership Programs', desc: 'Create training modules for student leaders', completed: false },
-            { id: 3, title: 'Coordinate School Events', desc: 'Lead planning for major school celebrations', completed: false },
-            { id: 4, title: 'Represent Student Body', desc: 'Attend meetings with school administration', completed: false }
+            { id: 1, title: 'Lead Student Assembly', desc: 'Organize and lead quarterly student assemblies', completed: false, evidence: [] },
+            { id: 2, title: 'Develop Leadership Programs', desc: 'Create training modules for student leaders', completed: false, evidence: [] },
+            { id: 3, title: 'Coordinate School Events', desc: 'Lead planning for major school celebrations', completed: false, evidence: [] },
+            { id: 4, title: 'Represent Student Body', desc: 'Attend meetings with school administration', completed: false, evidence: [] }
         ]
     },
     yeso: {
@@ -31,10 +31,10 @@ const clubsData = {
         icon: 'fas fa-seedling',
         subtitle: 'Leadership Award Tasks',
         tasks: [
-            { id: 1, title: 'Lead Environmental Campaign', desc: 'Organize school-wide environmental awareness drive', completed: false },
-            { id: 2, title: 'Implement Recycling Program', desc: 'Set up recycling stations and monitoring system', completed: false },
-            { id: 3, title: 'Tree Planting Activity', desc: 'Coordinate quarterly tree planting events', completed: false },
-            { id: 4, title: 'Green School Documentation', desc: 'Document and report environmental initiatives', completed: false }
+            { id: 1, title: 'Lead Environmental Campaign', desc: 'Organize school-wide environmental awareness drive', completed: false, evidence: [] },
+            { id: 2, title: 'Implement Recycling Program', desc: 'Set up recycling stations and monitoring system', completed: false, evidence: [] },
+            { id: 3, title: 'Tree Planting Activity', desc: 'Coordinate quarterly tree planting events', completed: false, evidence: [] },
+            { id: 4, title: 'Green School Documentation', desc: 'Document and report environmental initiatives', completed: false, evidence: [] }
         ]
     },
     bkb: {
@@ -42,10 +42,10 @@ const clubsData = {
         icon: 'fas fa-heart-broken',
         subtitle: 'Barkada Kontra Bisyo Leadership Award',
         tasks: [
-            { id: 1, title: 'Lead Anti-Drug Campaign', desc: 'Organize drug awareness seminars and activities', completed: false },
-            { id: 2, title: 'Peer Counseling Sessions', desc: 'Conduct regular peer counseling for at-risk students', completed: false },
-            { id: 3, title: 'Community Outreach', desc: 'Lead community-based anti-vise programs', completed: false },
-            { id: 4, title: 'Submit Advocacy Report', desc: 'Document and present club achievements', completed: false }
+            { id: 1, title: 'Lead Anti-Drug Campaign', desc: 'Organize drug awareness seminars and activities', completed: false, evidence: [] },
+            { id: 2, title: 'Peer Counseling Sessions', desc: 'Conduct regular peer counseling for at-risk students', completed: false, evidence: [] },
+            { id: 3, title: 'Community Outreach', desc: 'Lead community-based anti-vise programs', completed: false, evidence: [] },
+            { id: 4, title: 'Submit Advocacy Report', desc: 'Document and present club achievements', completed: false, evidence: [] }
         ]
     },
     math: {
@@ -53,10 +53,10 @@ const clubsData = {
         icon: 'fas fa-calculator',
         subtitle: 'Leadership Award Tasks',
         tasks: [
-            { id: 1, title: 'Organize Math Olympiad', desc: 'Lead the school\'s Math Olympiad preparation team', completed: false },
-            { id: 2, title: 'Math Tutorial Program', desc: 'Establish peer tutoring for struggling students', completed: false },
-            { id: 3, title: 'Math Week Celebration', desc: 'Plan and execute Math Week activities', completed: false },
-            { id: 4, title: 'Math Challenge Documentation', desc: 'Record competition results and achievements', completed: false }
+            { id: 1, title: 'Organize Math Olympiad', desc: 'Lead the school\'s Math Olympiad preparation team', completed: false, evidence: [] },
+            { id: 2, title: 'Math Tutorial Program', desc: 'Establish peer tutoring for struggling students', completed: false, evidence: [] },
+            { id: 3, title: 'Math Week Celebration', desc: 'Plan and execute Math Week activities', completed: false, evidence: [] },
+            { id: 4, title: 'Math Challenge Documentation', desc: 'Record competition results and achievements', completed: false, evidence: [] }
         ]
     },
     literary: {
@@ -64,10 +64,10 @@ const clubsData = {
         icon: 'fas fa-book-open',
         subtitle: 'Leadership Award Tasks',
         tasks: [
-            { id: 1, title: 'Organize Poetry Slam', desc: 'Lead monthly poetry reading events', completed: false },
-            { id: 2, title: 'School Publication', desc: 'Manage and edit school literary publication', completed: false },
-            { id: 3, title: 'Writing Workshop', desc: 'Conduct creative writing workshops', completed: false },
-            { id: 4, title: 'Literary Festival', desc: 'Organize annual literary festival', completed: false }
+            { id: 1, title: 'Organize Poetry Slam', desc: 'Lead monthly poetry reading events', completed: false, evidence: [] },
+            { id: 2, title: 'School Publication', desc: 'Manage and edit school literary publication', completed: false, evidence: [] },
+            { id: 3, title: 'Writing Workshop', desc: 'Conduct creative writing workshops', completed: false, evidence: [] },
+            { id: 4, title: 'Literary Festival', desc: 'Organize annual literary festival', completed: false, evidence: [] }
         ]
     },
     art: {
@@ -75,10 +75,10 @@ const clubsData = {
         icon: 'fas fa-palette',
         subtitle: 'Leadership Award Tasks',
         tasks: [
-            { id: 1, title: 'Art Exhibition', desc: 'Curate and organize student art exhibits', completed: false },
-            { id: 2, title: 'Mural Project', desc: 'Lead school mural design and painting', completed: false },
-            { id: 3, title: 'Art Workshop', desc: 'Conduct basic art techniques workshop', completed: false },
-            { id: 4, title: 'Art Competition Entry', desc: 'Prepare entries for inter-school competitions', completed: false }
+            { id: 1, title: 'Art Exhibition', desc: 'Curate and organize student art exhibits', completed: false, evidence: [] },
+            { id: 2, title: 'Mural Project', desc: 'Lead school mural design and painting', completed: false, evidence: [] },
+            { id: 3, title: 'Art Workshop', desc: 'Conduct basic art techniques workshop', completed: false, evidence: [] },
+            { id: 4, title: 'Art Competition Entry', desc: 'Prepare entries for inter-school competitions', completed: false, evidence: [] }
         ]
     },
     music: {
@@ -86,10 +86,10 @@ const clubsData = {
         icon: 'fas fa-music',
         subtitle: 'Leadership Award Tasks',
         tasks: [
-            { id: 1, title: 'School Choir Training', desc: 'Lead choir practice and performances', completed: false },
-            { id: 2, title: 'Music Concert', desc: 'Organize semester music concert', completed: false },
-            { id: 3, title: 'Band Formation', desc: 'Help establish and train school band', completed: false },
-            { id: 4, title: 'Music Festival Participation', desc: 'Prepare and lead team for competitions', completed: false }
+            { id: 1, title: 'School Choir Training', desc: 'Lead choir practice and performances', completed: false, evidence: [] },
+            { id: 2, title: 'Music Concert', desc: 'Organize semester music concert', completed: false, evidence: [] },
+            { id: 3, title: 'Band Formation', desc: 'Help establish and train school band', completed: false, evidence: [] },
+            { id: 4, title: 'Music Festival Participation', desc: 'Prepare and lead team for competitions', completed: false, evidence: [] }
         ]
     }
 };
@@ -551,9 +551,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="task-info">
                     <h4>${task.title}</h4>
                     <p>${task.desc}</p>
+                    ${task.evidence && task.evidence.length > 0 ? `
+                        <div class="task-evidence-list">
+                            ${task.evidence.map(e => `<span class="evidence-file"><i class="fas fa-paperclip"></i> ${e.name}</span>`).join('')}
+                        </div>
+                    ` : ''}
                 </div>
                 ${task.due ? `<span class="task-due"><i class="fas fa-calendar"></i> ${task.due}</span>` : ''}
                 <span class="task-status">${task.completed ? 'Completed' : 'Pending'}</span>
+                <label class="btn-upload-evidence" title="Upload evidence"><i class="fas fa-paperclip"></i><input type="file" accept="image/*,.pdf,.doc,.docx" hidden onchange="uploadEvidence(${task.id}, this)"></label>
                 <button class="btn-delete-task" data-id="${task.id}" title="Delete task"><i class="fas fa-trash"></i></button>
             </div>
         `).join('');
@@ -698,6 +704,29 @@ document.addEventListener('DOMContentLoaded', () => {
         clearTaskForm();
         createConfetti();
     });
+
+    // Upload Evidence for Task
+    window.uploadEvidence = function(taskId, input) {
+        if (!currentClubKey) return;
+        const club = clubsData[currentClubKey];
+        const task = club.tasks.find(t => t.id === taskId);
+        if (!task) return;
+
+        const file = input.files[0];
+        if (!file) return;
+
+        const evidence = {
+            name: file.name,
+            size: formatFileSize(file.size),
+            type: getFileType(file.name),
+            date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+        };
+
+        task.evidence.push(evidence);
+        renderTasks(currentClubKey);
+        createConfetti();
+        alert(`Evidence "${file.name}" uploaded for task: ${task.title}`);
+    };
 
     function clearTaskForm() {
         document.getElementById('newTaskTitle').value = '';
