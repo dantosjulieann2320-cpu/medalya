@@ -975,6 +975,83 @@
         </div>
     </div>
 
+    <!-- Certificate Modal -->
+    <div class="modal-overlay" id="certificateModal">
+        <div class="certificate-container">
+            <button class="close-certificate" id="closeCertificate"><i class="fas fa-times"></i></button>
+            <div class="certificate" id="certificateContent">
+                <div class="certificate-border">
+                    <div class="certificate-inner">
+                        <div class="certificate-header">
+                            <div class="school-seal">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div class="school-name">ECHOHONORS</div>
+                            <div class="school-tagline">Digital Student Achievement & Portfolio Management System</div>
+                        </div>
+                        
+                        <div class="certificate-title">
+                            <div class="trophy-icon"><i class="fas fa-trophy"></i></div>
+                            <h1>CERTIFICATE OF RECOGNITION</h1>
+                            <div class="gold-line"></div>
+                        </div>
+
+                        <div class="certificate-body">
+                            <p class="presented-to">This certificate is proudly presented to</p>
+                            <p class="student-name" id="certStudentName">Student Name</p>
+                            <div class="name-line"></div>
+                            
+                            <p class="achievement-text">
+                                In recognition of outstanding achievement and dedication in completing
+                            </p>
+                            
+                            <p class="award-name" id="certAwardName">Award Name</p>
+                            
+                            <p class="description-text">
+                                for demonstrating exceptional leadership, commitment, and excellence in
+                            </p>
+                            
+                            <p class="tasks-completed" id="certTasks">0 out of 0 tasks</p>
+                        </div>
+
+                        <div class="certificate-footer">
+                            <div class="signature">
+                                <div class="signature-line"></div>
+                                <p class="signature-name">System Administrator</p>
+                                <p class="signature-title">EchoHonors</p>
+                            </div>
+                            <div class="certificate-date">
+                                <div class="date-icon"><i class="fas fa-calendar-alt"></i></div>
+                                <p id="certDate">August 31, 2026</p>
+                            </div>
+                            <div class="signature">
+                                <div class="signature-line"></div>
+                                <p class="signature-name">School Principal</p>
+                                <p class="signature-title">Administrator</p>
+                            </div>
+                        </div>
+
+                        <div class="certificate-id">
+                            Certificate ID: <span id="certId">ECH-2026-00001</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Decorative Elements -->
+                <div class="cert-decoration cert-deco-1"></div>
+                <div class="cert-decoration cert-deco-2"></div>
+                <div class="cert-decoration cert-deco-3"></div>
+                <div class="cert-decoration cert-deco-4"></div>
+            </div>
+            
+            <div class="certificate-actions">
+                <button class="btn-primary" id="printCert"><i class="fas fa-print"></i> Print Certificate</button>
+                <button class="btn-primary" id="downloadCert"><i class="fas fa-download"></i> Download</button>
+                <button class="btn-primary" id="shareCert"><i class="fas fa-share-alt"></i> Share</button>
+            </div>
+        </div>
+    </div>
+
     <div class="confetti-overlay" id="confettiOverlay"></div>
 
     <script src="echo-script.js"></script>

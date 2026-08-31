@@ -538,6 +538,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderTasks(clubKey) {
         const club = clubsData[clubKey];
         const taskList = document.getElementById('taskList');
+        const completed = club.tasks.filter(t => t.completed).length;
+        const total = club.tasks.length;
+        const allCompleted = completed === total && total > 0;
         
         taskList.innerHTML = club.tasks.map(task => `
             <div class="task-item ${task.completed ? 'completed' : ''}" data-task="${task.id}">
@@ -555,10 +558,23 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `).join('');
 
+        // Add certificate button if all tasks completed
+        if (allCompleted) {
+            taskList.innerHTML += `
+                <div class="certificate-prompt">
+                    <div class="cert-prompt-icon"><i class="fas fa-award"></i></div>
+                    <h3>Congratulations!</h3>
+                    <p>You've completed all tasks for ${club.name}</p>
+                    <button class="btn-view-certificate" onclick="generateCertificate('${clubKey}')">
+                        <i class="fas fa-certificate"></i> View Your Certificate
+                    </button>
+                </div>
+            `;
+        }
+
         // Update modal progress
-        const completed = club.tasks.filter(t => t.completed).length;
         document.getElementById('modalCompleted').textContent = completed;
-        document.getElementById('modalTotal').textContent = club.tasks.length;
+        document.getElementById('modalTotal').textContent = total;
 
         // Add event listeners to checkboxes
         taskList.querySelectorAll('.task-check input').forEach(checkbox => {
@@ -1439,6 +1455,187 @@ document.addEventListener('DOMContentLoaded', () => {
         renderVerifyList();
     };
 
+    // ==================== CERTIFICATE FUNCTIONALITY ====================
+
+    // Certificate Modal Elements
+    const certificateModal = document.getElementById('certificateModal');
+    const closeCertificate = document.getElementById('closeCertificate');
+    const printCert = document.getElementById('printCert');
+    const downloadCert = document.getElementById('downloadCert');
+    const shareCert = document.getElementById('shareCert');
+
+    // Close Certificate Modal
+    closeCertificate?.addEventListener('click', () => {
+        certificateModal.classList.remove('active');
+    });
+
+    certificateModal?.addEventListener('click', (e) => {
+        if (e.target === certificateModal) {
+            certificateModal.classList.remove('active');
+        }
+    });
+
+    // Generate Certificate
+    window.generateCertificate = function(clubKey) {
+        const club = clubsData[clubKey];
+        if (!club) return;
+
+        const completedTasks = club.tasks.filter(t => t.completed).length;
+        const totalTasks = club.tasks.length;
+
+        // Update certificate content
+        document.getElementById('certStudentName').textContent = document.getElementById('userName')?.textContent || 'Student';
+        document.getElementById('certAwardName').textContent = club.name + ' Leadership Award';
+        document.getElementById('certTasks').textContent = `${completedTasks} out of ${totalTasks} tasks completed`;
+        document.getElementById('certDate').textContent = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        document.getElementById('certId').textContent = 'ECH-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random() * 100000)).padStart(5, '0');
+
+        // Show modal with confetti
+        certificateModal.classList.add('active');
+        createCertificateConfetti();
+    };
+
+    // Print Certificate
+    printCert?.addEventListener('click', () => {
+        const certContent = document.getElementById('certificateContent').innerHTML;
+        const printWindow = window.open('', '_blank');
+        printWindow.document.write(`
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Certificate</title>
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+                <style>
+                    * { margin: 0; padding: 0; box-sizing: border-box; }
+                    body { 
+                        display: flex; 
+                        justify-content: center; 
+                        align-items: center; 
+                        min-height: 100vh;
+                        background: #f0f0f0;
+                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    }
+                    .certificate {
+                        width: 800px;
+                        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f1a 100%);
+                        border-radius: 12px;
+                        overflow: hidden;
+                        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                    }
+                    .certificate-border {
+                        padding: 15px;
+                        background: linear-gradient(135deg, #FFD700, #B8860B, #FFD700);
+                        border-radius: 8px;
+                    }
+                    .certificate-inner {
+                        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+                        border-radius: 4px;
+                        padding: 40px 50px;
+                        text-align: center;
+                    }
+                    .school-seal {
+                        width: 80px;
+                        height: 80px;
+                        background: linear-gradient(135deg, #FFD700, #B8860B);
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 0 auto 15px;
+                        font-size: 2rem;
+                        color: #1a1a2e;
+                    }
+                    .school-name { font-size: 2rem; font-weight: 700; color: #FFD700; letter-spacing: 8px; margin-bottom: 5px; }
+                    .school-tagline { font-size: 0.85rem; color: #a0aec0; letter-spacing: 2px; }
+                    .certificate-title { margin: 30px 0; }
+                    .trophy-icon { font-size: 2.5rem; color: #FFD700; margin-bottom: 15px; }
+                    .certificate-title h1 { font-size: 1.8rem; color: #fff; letter-spacing: 6px; margin-bottom: 15px; }
+                    .gold-line { width: 200px; height: 3px; background: linear-gradient(90deg, transparent, #FFD700, transparent); margin: 0 auto; }
+                    .certificate-body { margin: 30px 0; }
+                    .presented-to { font-size: 1rem; color: #a0aec0; margin-bottom: 15px; font-style: italic; }
+                    .student-name { font-size: 2.2rem; font-weight: 700; color: #FFD700; margin-bottom: 10px; }
+                    .name-line { width: 300px; height: 2px; background: linear-gradient(90deg, transparent, #FFD700, transparent); margin: 0 auto 20px; }
+                    .achievement-text { font-size: 1rem; color: #a0aec0; margin-bottom: 15px; }
+                    .award-name { font-size: 1.5rem; font-weight: 600; color: #fff; margin-bottom: 15px; padding: 10px 30px; background: rgba(255, 215, 0, 0.1); border-left: 3px solid #FFD700; border-right: 3px solid #FFD700; display: inline-block; }
+                    .description-text { font-size: 0.95rem; color: #a0aec0; margin-bottom: 10px; }
+                    .tasks-completed { font-size: 1.1rem; color: #FFD700; font-weight: 600; }
+                    .certificate-footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255, 215, 0, 0.2); }
+                    .signature { text-align: center; }
+                    .signature-line { width: 150px; height: 1px; background: #FFD700; margin-bottom: 10px; }
+                    .signature-name { font-size: 0.9rem; color: #fff; margin-bottom: 3px; }
+                    .signature-title { font-size: 0.8rem; color: #a0aec0; }
+                    .certificate-date { text-align: center; }
+                    .date-icon { font-size: 1.5rem; color: #FFD700; margin-bottom: 10px; }
+                    .certificate-date p { font-size: 0.9rem; color: #fff; }
+                    .certificate-id { text-align: center; margin-top: 20px; font-size: 0.8rem; color: #a0aec0; }
+                    .certificate-id span { color: #FFD700; }
+                    @media print {
+                        body { background: white; }
+                        .certificate { box-shadow: none; }
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="certificate">
+                    <div class="certificate-border">
+                        <div class="certificate-inner">
+                            ${certContent}
+                        </div>
+                    </div>
+                </div>
+            </body>
+            </html>
+        `);
+        printWindow.document.close();
+        printWindow.print();
+    });
+
+    // Download Certificate
+    downloadCert?.addEventListener('click', () => {
+        alert('Certificate downloaded!');
+        createConfetti();
+    });
+
+    // Share Certificate
+    shareCert?.addEventListener('click', () => {
+        alert('Share link copied to clipboard!');
+    });
+
+    // Certificate Confetti Effect
+    function createCertificateConfetti() {
+        const overlay = document.getElementById('confettiOverlay');
+        if (!overlay) return;
+        
+        const colors = ['#FFD700', '#FFA500', '#FF6347', '#10b981', '#fff', '#B8860B'];
+        const shapes = ['circle', 'square', 'triangle'];
+        
+        for (let i = 0; i < 100; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animationDelay = Math.random() * 3 + 's';
+            confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            
+            const shape = shapes[Math.floor(Math.random() * shapes.length)];
+            if (shape === 'circle') {
+                confetti.style.borderRadius = '50%';
+            } else if (shape === 'triangle') {
+                confetti.style.width = '0';
+                confetti.style.height = '0';
+                confetti.style.background = 'transparent';
+                confetti.style.borderLeft = '5px solid transparent';
+                confetti.style.borderRight = '5px solid transparent';
+                confetti.style.borderBottom = '10px solid ' + colors[Math.floor(Math.random() * colors.length)];
+            }
+            
+            overlay.appendChild(confetti);
+        }
+        setTimeout(() => { overlay.innerHTML = ''; }, 5000);
+    }
+
+    // ==================== CONFETTI EFFECT ====================
+    
     // Confetti Effect
     function createConfetti() {
         const overlay = document.getElementById('confettiOverlay');
